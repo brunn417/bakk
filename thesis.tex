@@ -1,0 +1,270 @@
+% Copyright (C) 2014-2020 by Thomas Auzinger <thomas@auzinger.name>
+
+\documentclass[draft,final]{vutinfth} % Remove option 'final' to obtain debug information.
+
+% Load packages to allow in- and output of non-ASCII characters.
+\usepackage{lmodern}        % Use an extension of the original Computer Modern font to minimize the use of bitmapped letters.
+\usepackage[T1]{fontenc}    % Determines font encoding of the output. Font packages have to be included before this line.
+\usepackage[utf8]{inputenc} % Determines encoding of the input. All input files have to use UTF8 encoding.
+
+% Extended LaTeX functionality is enables by including packages with \usepackage{...}.
+\usepackage{csquotes}   % used for easy quotes
+\usepackage{amsmath}    % Extended typesetting of mathematical expression.
+\usepackage{amssymb}    % Provides a multitude of mathematical symbols.
+\usepackage{mathtools}  % Further extensions of mathematical typesetting.
+\usepackage{microtype}  % Small-scale typographic enhancements.
+\usepackage[inline]{enumitem} % User control over the layout of lists (itemize, enumerate, description).
+\usepackage{multirow}   % Allows table elements to span several rows.
+\usepackage{booktabs}   % Improves the typesettings of tables.
+\usepackage{subcaption} % Allows the use of subfigures and enables their referencing.
+\usepackage[ruled,linesnumbered,algochapter]{algorithm2e} % Enables the writing of pseudo code.
+\usepackage[usenames,dvipsnames,table]{xcolor} % Allows the definition and use of colors. This package has to be included before tikz.
+\usepackage{nag}       % Issues warnings when best practices in writing LaTeX documents are violated.
+\usepackage{todonotes} % Provides tooltip-like todo notes.
+\usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
+\usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
+
+% Define convenience functions to use the author name and the thesis title in the PDF document properties.
+\newcommand{\authorname}{Paul Brunner} % The author name without titles.
+\newcommand{\thesistitle}{} % The title of the thesis. The English version should be used, if it exists.
+
+% Set PDF document properties
+\hypersetup{
+    pdfpagelayout   = TwoPageRight,           % How the document is shown in PDF viewers (optional).
+    linkbordercolor = {Melon},                % The color of the borders of boxes around crosslinks (optional).
+    pdfauthor       = {\authorname},          % The author's name in the document properties (optional).
+    pdftitle        = {\thesistitle},         % The document's title in the document properties (optional).
+    pdfsubject      = {Subject},              % The document's subject in the document properties (optional).
+    pdfkeywords     = {a, list, of, keywords} % The document's keywords in the document properties (optional).
+}
+
+\setpnumwidth{2.5em}        % Avoid overfull hboxes in the table of contents (see memoir manual).
+\setsecnumdepth{subsection} % Enumerate subsections.
+
+\nonzeroparskip             % Create space between paragraphs (optional).
+\setlength{\parindent}{0pt} % Remove paragraph identation (optional).
+
+\makeindex      % Use an optional index.
+\makeglossaries % Use an optional glossary.
+%\glstocfalse   % Remove the glossaries from the table of contents.
+
+% Set persons with 4 arguments:
+%  {title before name}{name}{title after name}{gender}
+%  where both titles are optional (i.e. can be given as empty brackets {}).
+\setauthor{}{\authorname}{}{}
+\setauthorextra
+\setadvisor{Dipl.-Ing.}{Thomas Artner}{}{male}
+
+% For bachelor and master theses:
+%\setfirstassistant{Pretitle}{Forename Surname}{Posttitle}{male}
+%\setsecondassistant{Pretitle}{Forename Surname}{Posttitle}{male}
+%\setthirdassistant{Pretitle}{Forename Surname}{Posttitle}{male}
+
+% For dissertations:
+\setfirstreviewer{Pretitle}{Forename Surname}{Posttitle}{male}
+\setsecondreviewer{Pretitle}{Forename Surname}{Posttitle}{male}
+
+% For dissertations at the PhD School and optionally for dissertations:
+\setsecondadvisor{Pretitle}{Forename Surname}{Posttitle}{male} % Comment to remove.
+
+% Required data.
+\setregnumber{11919163}
+\setdate{01}{06}{2024} % Set date with 3 arguments: {day}{month}{year}.
+\settitle{\thesistitle}{Die Evaluierung und Implementierung einer Web-API} % Sets English and German version of the title (both can be English or German). If your title contains commas, enclose it with additional curvy brackets (i.e., {{your title}}) or define it as a macro as done with \thesistitle.
+\setsubtitle{Optional Subtitle of the Thesis}{Technologieevaluierung und Implementierung einer Web-
+		Schnittstelle für Gebäudezertifizierungsdaten:
+		Eine Fallstudie bei der Pulswerk GmbH.} % Sets English and German version of the subtitle (both can be English or German).
+
+% Select the thesis type: bachelor / master / doctor / phd-school.
+% Bachelor:
+\setthesis{bachelor}
+%
+% Master:
+%\setthesis{master}
+%\setmasterdegree{dipl.} % dipl. / rer.nat. / rer.soc.oec. / master
+%
+% Doctor:
+%\setthesis{doctor}
+%\setdoctordegree{rer.soc.oec.}% rer.nat. / techn. / rer.soc.oec.
+%
+% Doctor at the PhD School
+%\setthesis{phd-school} % Deactivate non-English title pages (see below)
+
+% For bachelor and master:
+\setcurriculum{Media Informatics and Visual Computing}{Software \& Information Engineering} % Sets the English and German name of the curriculum.
+
+% For dissertations at the PhD School:
+\setfirstreviewerdata{Affiliation, Country}
+\setsecondreviewerdata{Affiliation, Country}
+
+
+\begin{document}
+
+\frontmatter % Switches to roman numbering.
+% The structure of the thesis has to conform to the guidelines at
+%  https://informatics.tuwien.ac.at/study-services
+
+%\addtitlepage{naustrian} % German title page (not for dissertations at the PhD School).
+% \addtitlepage{english} % English title page.
+\addinsotitlepage{naustrian}
+\addstatementpage
+
+\begin{danksagung*}
+\todo{Ihr Text hier.}
+danke mutti
+\end{danksagung*}
+
+\begin{acknowledgements*}
+\todo{Enter your text here.}
+wtf ist das
+\end{acknowledgements*}
+
+\begin{kurzfassung}
+\todo{Ihr Text hier.}
+Dieses Template dient als Vorlage für die Erstellung einer Diplomarbeit am INSO. Individuelle Erweiterungen, Strukturanpassungen und Layout-Veränderungen können und sollen selbstverständlich nach persönlichem Ermessen und in Rücksprache mit Ihrem Betreuer vorgenommen werden. 
+
+Diplomarbeiten aus Informatik können in deutscher oder englischer Sprache verfasst werden, Arbeiten aus Business Informatics müssen auf Englisch geschrieben werden.
+
+Die Kurzfassung ist der Teil der Arbeit, der wohl am häufigsten gelesen wird – so wird sie beispielsweise im Epilog-Band der Fakultät publiziert und einem breiten Publikum verfügbar gemacht. Empfohlen wird, die Kurzfassung erst nach Finalisierung der gesamten Arbeit zu schreiben.
+
+Aufbau: In der Kurzfassung werden auf einer 3/4 bis maximal einer Seite die Kernaussagen der Diplomarbeit zusammengefasst. Dabei sollte zunächst die Motivation/ der Kontext der vorliegenden Arbeit dargestellt werden, und dann kurz die Frage-/ Problemstellung erläutert werden, max. 1 Absatz! Im nächsten Absatz auf die Methode/ Verfahrensweise/ das konkrete Fallbeispiel eingehen, mit deren Hilfe die Ergebnisse erzielt wurden. Im Zentrum der Kurzfassung stehen die zentralen eigenen Ergebnisse der Arbeit, die den Wert der vorliegenden wissenschaftlichen Arbeit ausmachen. Hier auch, wenn vorhanden, eigene Publikationen erwähnen.
+
+Wichtig: Verständlichkeit! Abkürzungen immer zuerst ausschreiben, in Klammer die Erklärung: Im Rahmen der vorliegenden Arbeit werden Non Governmental-Organisationen (NGOs) behandelt, \ldots
+
+Bei theoretischen Diplomarbeiten, z.B. Literaturüberblick und Grundlagen zu einem größeren Themenblock, sollte in der Kurzfassung deutlich der Bedarf an einer solchen Übersicht und der Nutzen für die akademische Gemeinschaft aufgezeigt werden.
+
+
+\textbf{Keywords:} \emph{5 – max. 8 Keywords zur Arbeit eingeben}
+\end{kurzfassung}
+
+\begin{abstract}
+\todo{Enter your text here.}
+Hier werden auf einer halben bis maximal einer Seite die Kernaussagen der Diplomarbeit in Englisch zusammengefasst ( = Übersetzung der Kurzfassung, am besten von einem \enquote{Native Speaker} Korrektur lesen lassen). Englischer Abstract ist auch bei auf Deutsch geschriebenen Arbeiten verpflichtend von der Fakultät vorgesehen.
+
+
+\textbf{Keywords:} \emph{Übersetzung der deutschen Keywords}
+\end{abstract}
+
+% Select the language of the thesis, e.g., english or naustrian.
+\selectlanguage{naustrian}
+
+% Add a table of contents (toc).
+\tableofcontents % Starred version, i.e., \tableofcontents*, removes the self-entry.
+
+% Switch to arabic numbering and start the enumeration of chapters in the table of content.
+\mainmatter
+
+\chapter{EINLEITUNG}
+
+\section{Hintergrund und Motivation}
+
+Die Pulswerk GmbH ist seit mehr als 2 Jahren mein Arbeitgeber.
+Ihr Tätigkeitsbereich ist sehr umfassend, aber einer der Kernbereiche ist die Bereitstellung von Web-Applikationen zur Zertifizierung von Gebäudedaten.
+Für verschiedene Zertifikate und Kunden gibt es unterschiedliche Plattformen und Kriteriensets, jedoch ist eine generische Grundstruktur die Basis. 
+Mein derzeitiger Tätigkeitsbereich ist die Qualitätssicherung und Unterstützung bei der Weiterentwicklung dieser Plattformen.
+Diese Gebäude-spezifischen Daten sind auf dem Webserver der Pulswerk GmbH gespeichert und nur über diese Formulare und bestimmten Webseiten zugänglich.
+Damit ein strukturierter und übersichtlicher Zugang zu diesen Daten ermöglicht wird, soll eine Web-Schnittstelle in Form eines Application Programming Interface (API) implementiert werden.
+
+Im Zuge dieser Bachelorarbeit für Informatik, die zum Abschluss des Bachelorstudiums Software \& Information 033 534 Engineering an der Technische Universität Wien Voraussetzung ist, werde ich diese Problemstellung behandeln und zu einer Lösung beitragen.
+ 
+ 
+\section{Zielsetzung der Arbeit}
+
+Da es in der Zukunft viele unterschiedliche Benutzergruppen dieser Schnittstelle geben soll, wird eine generische aber auf die Anforderungen abgestimmte Implementierung erwartet. 
+Um dies zu ermöglichen, muss im Vorfeld der Implementierung eine genaue Evaluierung der verschiedenen Technologien und Ansprüche durchgeführt werden. 
+Das Ziel dieser Arbeit ist, den derzeitigen Stand der Technik in Bezug auf Web-Schnittstellen zu recherchieren und auf dem erlangten Wissen aufbauend eine API entwerfen.
+Diese soll nicht nur den Ansprüchen der Stakeholder gerecht werden, sondern auch technische nicht funktionalen Anforderungen sättigen.
+Dabei sind Aspekte wie Sicherheit, Antwortzeit, Benutzerfreundlichkeit und Skalierbarkeit grundlegende Kriterien, aber auch Parameter wie Over- und Underfetching sind von Bedeutung und werden bei der Anforderungsanalyse berücksichtigt. teest jusu fggg  sdgfsgsdfsd
+
+
+\section{Struktur der Arbeit}
+
+
+
+\chapter{Grundlagen}
+\todo{Enter your text here.}
+
+\section{Beschreibung des Unternehmens: Pulswerk GmbH}
+
+\section{Notwendigkeit einer API für interne und externe Organisationen}
+
+\section{Grundlagen von Web-Schnittstellen und deren Designprinzipien}
+
+\section{Anforderungen an die Schnittstelle}
+
+
+
+\chapter{Ähnliche Arbeiten}
+\todo{Enter your text here.}
+
+\section{Literaturüberblick zu vorhandenen Forschungsarbeiten im Bereich Web-Schnittstellen}
+
+
+
+\chapter{Methode}
+\todo{Enter your text here.}
+
+
+
+\chapter{Analyse und Design}
+\todo{Enter your text here.}
+
+\section{Anforderungsanalyse}
+
+\section{Design \& Konzept der Web-Schnittstelle}
+
+
+
+\chapter{Implementierung}
+\todo{Enter your text here.}
+
+\section{Prototypische Implementierung der Schnittstelle}
+
+
+
+\chapter{Validierung der Lösung}
+\todo{Enter your text here.}
+
+\section{Vergleich mit ähnlichen Systemen}
+
+\section{Experteninterviews - Durchführung}
+
+\section{Experteninterviews - Analyse}
+
+
+
+\chapter{Ergebnisse}
+\todo{Enter your text here.}
+
+\section{Ausblick}
+
+\section{Zusammenfassung}
+
+
+% Remove following line for the final thesis.
+\input{intro.tex} % A short introduction to LaTeX.
+
+\backmatter
+
+% Use an optional list of figures.
+\listoffigures % Starred version, i.e., \listoffigures*, removes the toc entry.
+
+% Use an optional list of tables.
+\cleardoublepage % Start list of tables on the next empty right hand page.
+\listoftables % Starred version, i.e., \listoftables*, removes the toc entry.
+
+% Use an optional list of alogrithms.
+\listofalgorithms
+\addcontentsline{toc}{chapter}{Liste der Algorithmen}
+
+% Add an index.
+\printindex
+
+% Add a glossary.
+\printglossaries
+
+% Add a bibliography.
+\bibliographystyle{alpha}
+\bibliography{intro}
+
+\end{document}
