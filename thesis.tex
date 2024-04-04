@@ -256,7 +256,7 @@ Den Kunden wird über diese Plattform Zugang gewährt, wobei der Zugriff durch e
 Die Entwicklung einer generischen API, die diesen Anforderungen gerecht wird, sowie die Erstellung einer nachvollziehbaren Dokumentation bildet die essentielle Basis, um Benutzerfreundlichkeit des Systems sicherzustellen.
 
 
-\section{Theoretische Konzepte und Designprinzipien von Web-Schnittstellen}
+\section{Theoretische Konzepte von Web-Schnittstellen}
 
 APIs sind essentielle Mechanismen, die Interaktionen zwischen zwei Softwarekomponenten ermöglichen. 
 Beide Seiten verwenden dafür bestimmte Schnittstellenspezifikationen und Protokolle, um einen nahtlosen Datenaustausch zu gewährleisten, oder im Fehlerfall aussagekräftige Fehlermeldungen bereitzustellen.
@@ -267,14 +267,19 @@ Dieser interpretiert die Anfrage gemäß der API-Konventionen, verarbeitet diese
 Web-Schnittstellen repräsentieren eine spezialisierte Kategorie von APIs, die spezifisch für eine Kommunikation zwischen Web-Clients –- üblicherweise Web-Browsern –- und Web-Servern ausgelegt sind. 
 Hierbei wird der Datenaustausch über das Hypertext Transfer Protocol (HTTP) oder dessen sichere Variante, HTTPS, abgewickelt, wobei eine große Bandbreite an Datenformaten wie HTML, XML oder JSON zum Einsatz kommen kann.
 
-Es exisitieren viele Ansätze, wie das Design einer API aussehen soll. 
-Das Ziel ist immer dasselbe: Eine robuste und intuitive Schnittstelle.
-Bricht man die wichtigsten Aspekte herunter, kommt man ungefähr zu folgenden Auflistung:
-Schnittstellen sollen langlebig und mit möglich wenig Wartung laufen.
-Sie sollen leiccht zu verwenden sein.
-Es soll keine allzu ausführliche Dokumenation notwendig sein, da sich die Schnittstelle selbst beschreiben  soll.
-Es soll im VOrrhiniien eine Anforderungsanalyse durchgeführt werden, um den tatsächlichen Ansprüchen gerecht zu werden.
 
+\section{Designprinzipien von Web-Schnittstellen}
+
+Das Design von APIs unterliegen einer Vielzahl von Ansätzen, deren übergreifendes Ziel es ist, eine robuste und intuitiv bedienbare Schnittstelle zu entwickeln. 
+Im Zentrum steht der Entwurf einer API, die nicht nur in ihrer Lebensdauer beständig, sondern auch wartungsarm ist. 
+Eine effektive API zeichnet sich durch ihre Benutzerfreundlichkeit aus und bedarf keiner umfangreichen Dokumentation, da sie weitgehend selbsterklärend sein sollte. \cite{How2Design_good_API}
+
+Im Vorfeld der Entwicklung einer solchen Schnittstelle ist eine umfassende Anforderungsanalyse essenziell, um eine adäquate Erfüllung der spezifischen Ansprüche zu gewährleisten. 
+Mit der Weiterentwicklung der Anwendungsfälle muss auch die API in ihrer Funktionalität flexibel und adaptiv gestaltet sein, um zukünftigen Anforderungen gerecht zu werden. 
+Dies bedingt, dass die Weiterentwicklung der API stets unter Berücksichtigung dieser dynamischen Entwicklung erfolgt. \cite{How2Design_good_API}
+
+Des Weiteren spielen aussagekräftige Beispiele für die Nutzung der API eine grundlegende Rolle, um deren Leistungsfähigkeit und Anwendbarkeit zu veranschaulichen. 
+Die Klarheit in der Namensgebung ist ein weiterer kritischer Faktor, der die Zugänglichkeit und Verständlichkeit der API maßgeblich beeinflusst. Darüber hinaus ist es vorteilhaft, wenn alle Anfragen im String-Format verarbeitet werden können und die API konsistente sowie typgerechte Rückgabeformate liefert, um die Datenverarbeitung und Datenintegration zu vereinfachen. \cite{How2Design_good_API}
 
 
 \section{Anforderungen an die Schnittstelle}
