@@ -318,14 +318,15 @@ Dabei werden insbesondere die Vor- und Nachteile verschiedener Technologien im K
 
 \section{Web-APIs}
 
-Die Nutzung von Web-Schnittstellen birgt Herausforderungen, insbesondere aufgrund des Fehlens einheitlicher Standards\cite{Standardizing_APIs}. 
-Viele Websites ermöglichen zwar den Drittzugriff auf ihre Daten durch Web-APIs, jedoch erfordert die manuelle Kodierung von URLs – inklusive arbiträrer Endpunkte, Parameter, Authentifizierungsverfahren und Pagination – ein tiefgehendes Verständnis und erheblichen Arbeitsaufwand
+Die Nutzung von Web-Schnittstellen birgt Herausforderungen, insbesondere aufgrund des Fehlens einheitlicher Standards \cite{Standardizing_APIs}. 
+Obwohl viele Webseiten Dritten den Zugang zu ihren Daten über Web-APIs gewähren, stellt die manuelle Erstellung von URLs –- einschließlich der Festlegung von Endpunkten, Parametern, Authentifizierungsprozessen und der Handhabung von Seitenumbrüchen -– eine erhebliche Hürde dar 
 \cite{Standardizing_APIs, Investigation_Web-APIs}. 
-Trotz oft ähnlichem Informationstypen, besitzt eine Vielzahl an Web-APIs ihr eigenes, spezifisches Datenmodell, welche auf unterschiedliche Weise Methoden und Eigenschaften zur Verfügung stellt\cite{Standardizing_APIs}.
-Um sich Zugang zu diesen unterschiedlichen Systemen zu ermöglichen, ist das notwendig, sich mit ihnen im Voraus vertraut zu machen. 
-Jedoch wird dies durch die Vielfalt und oft inkonsistente Art der Dokumentation zusätzlich erschwert.
+Diese Prozesse erfordern ein tiefgehendes Verständnis und sind mit einem beträchtlichen Zeitaufwand verbunden \cite{Standardizing_APIs}. 
+Zudem verfügt eine große Anzahl dieser Web-APIs über individuelle Datenmodelle, die, obwohl sie häufig ähnliche Arten von Informationen verwalten, unterschiedliche Methoden und Eigenschaften auf ihre eigene Weise bereitstellen \cite{Standardizing_APIs}.
+Um sich Zugang zu diesen Systemen zu ermöglichen, ist es notwendig, sich mit diesen im Voraus vertraut zu machen. 
+Jedoch wird dies durch die Vielfalt und oft inkonsistente Art der Dokumentation zusätzlich erschwert \cite{Investigation_Web-APIs}.
 
-
+Eine umfangreiche empirische Studie von Souhaila Serbout, die auf der IEEE International Conference on Software Architecture Workshops vorgestellt wurde, untersucht die Größe und Struktur von Web-API-Spezifikationen, die aus Open-Source-Repositories extrahiert wurden. Diese Web-APIs, modelliert mit der OpenAPI Specification (OAS), umfassen neben der Dokumentation der bereitgestellten Operationen auch Schemadefinitionen für den Datenaustausch bei API-Anfragen und -Antworten. Durch die Analyse von 42.194 gültigen OAS-Spezifikationen, die zwischen 2014 und 2021 veröffentlicht wurden und von bekannten Dienstanbietern wie Google, VMware (Avi Networks), Twilio und Amazon stammen, zeigt die Studie, dass die meisten Web-APIs eher klein sind. Zudem wurde eine mittlere Korrelation zwischen der Größe der funktionalen Strukturen der APIs und ihrer Datenmodelle festgestellt, wobei API-Entwickler Schemadefinitionen innerhalb desselben API-Modells wiederverwenden\cite{Serbout2021APIStudy}.
 
 
 
