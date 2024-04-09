@@ -328,7 +328,11 @@ Jedoch wird dies durch die Vielfalt und oft inkonsistente Art der Dokumentation 
 
 Eine umfangreiche empirische Studie von S. Serbout,  F. D. Lauro und C. Pautasso, die auf der IEEE International Conference on Software Architecture Workshops 2022 vorgestellt wurde, untersucht die Größe und Struktur von Web-API-Spezifikationen, die aus Open-Source-Repositories extrahiert wurden. Diese Web-APIs umfassen neben der Dokumentation der bereitgestellten Operationen auch Schemadefinitionen für den Datenaustausch bei API-Anfragen und API-Antworten. 
 % irgendwas hinwixen wieso es eine berechtigung hier drin zu stehen hat
-Durch die Analyse von 42.194 gültigen OAS-Spezifikationen, die zwischen 2014 und 2021 veröffentlicht wurden und von bekannten Dienstanbietern wie Google, VMware (Avi Networks), Twilio und Amazon stammen, zeigt die Studie, dass die meisten Web-APIs eher klein sind. \cite{Web-Api-Structures}
+Durch die Analyse von 42.194 gültigen OAS-Spezifikationen, die zwischen 2014 und 2021 veröffentlicht wurden und von bekannten Dienstanbietern wie Google, VMware (Avi Networks), Twilio und Amazon stammen, zeigt die Studie verschiedene Metriken auf. 
+Der Mittelwert über alle diese Schnittstellen ist 3,98 Pfade zu 5,23 Operationen. 
+Außerdem wurde eine Korrelation zwischen der Größe der API und Art des Designkonzeptes entdeckt. 
+So sind kleine Schnittstellen meißt nur Read-Only und in Remote Procedure Call (RPC) Stil implementiert. 
+Wohingegen größere Schnittstellen, drei Pfade oder mehr, eher in Richtung Create, Read, Update and Delete (CRUD) und Representational State Transfer (REST) tendieren. \cite{Web-Api-Structures}
 
 
 
