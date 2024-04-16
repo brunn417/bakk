@@ -327,7 +327,6 @@ Um sich Zugang zu diesen Systemen zu ermöglichen, ist es notwendig, sich mit di
 Jedoch wird dies durch die Vielfalt und oft inkonsistente Art der Dokumentation zusätzlich erschwert \cite{Investigation_Web-APIs}.
 
 Eine umfangreiche empirische Studie von S. Serbout,  F. D. Lauro und C. Pautasso, die auf der IEEE International Conference on Software Architecture Workshops 2022 vorgestellt wurde, untersucht die Größe und Struktur von Web-API-Spezifikationen, die aus Open-Source-Repositories extrahiert wurden. Diese Web-APIs umfassen neben der Dokumentation der bereitgestellten Operationen auch Schemadefinitionen für den Datenaustausch bei API-Anfragen und API-Antworten. 
-% irgendwas hinwixen wieso es eine berechtigung hier drin zu stehen hat
 Durch die Analyse von 42.194 gültigen OAS-Spezifikationen, die zwischen 2014 und 2021 veröffentlicht wurden und von bekannten Dienstanbietern wie Google, VMware (Avi Networks), Twilio und Amazon stammen, zeigt die Studie verschiedene Metriken auf. 
 Der Mittelwert über alle diese Schnittstellen ist 3,98 Pfade zu 5,23 Operationen. 
 Außerdem wurde eine Korrelation zwischen der Größe der API und Art des Designkonzeptes entdeckt. 
@@ -335,14 +334,17 @@ So sind kleine Schnittstellen meißt nur Read-Only und in Remote Procedure Call 
 Wohingegen Schnittstellen mit drei oder mehr Pfade in Richtung Create, Read, Update and Delete (CRUD) oder Representational State Transfer (REST) tendieren. \cite{Web-Api-Structures}
 
 
+\section{REST-APIs}
+
+Der Großteil aller Web-APIs werden als REST-Schnittstellen deklariert, obwohl nur ein minimaler Anteil tatsächlich die REST-Prinzipien erfüllt \cite{Analysis-of-Rest}.
+Zwar setzen die meisten dieser Schnittstellen einige der REST-Aspekte um, aber erfüllen beinahe nie den in Roy Fieldings Dissertation im Jahr 2000 definierten Architekturstil REST \cite{Analysis-of-Rest}.
+Eine Softwarearchitektur sind die Komponenten eines Softwaresystems, die voneinander abhängig sind und miteinander kommunizieren müssen, um ein funktionsfähiges Programm am laufen zu lassen \cite.
+Der Architekturstil gibt vor, welche architektonische Vorbedingungen erfüllt werden müssen, um ein System dem Stil zuordnen zu können.
+Das Paradigma REST beinhaltet sechs solche Constraints.
 
 
-Plan: 
 
-1. zuerst allgemein was über webschnittstellen
-\cite{Investigation_Web-APIs}
-\cite{Web-Api-Structures}
-\cite{Standardizing_APIs}
+
 
 2. über rest +/-
 \cite{Analysis-of-Rest}
