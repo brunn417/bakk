@@ -372,13 +372,13 @@ Dies ermöglicht es dem Client, Antworten für zukünftige Anfragen wiederzuverw
 
 Die Haupteigenschaft vom REST-Architekturstil ist das Uniform Interface und wird durch vier untergeordnete Einschränkungen definiert, die gemeinsam das Konzept von Ressourcen und deren Repräsentationen prägen.
 
-\textbf{{\large Ressourcen und Repräsentationen}} \\
+\textbf{{ Ressourcen und Repräsentationen}} \\
 Roy Fielding definiert eine Ressource als eine benennbare Information, die über eine zeitlich variable Funktion identifiziert wird. 
 Repräsentationen beschreibt Fielding als eine Byte-Sequenz, ergänzt durch Metadaten, die diese Bytes beschreiben. Die Repräsentation ist das, was als Antwort auf eine Ressourcenanforderung übermittelt wird.
 Diese entscheidende Trennung von Ressource und Repräsentation erleichtert die Verwaltung von Ressourcen, indem sie es ermöglicht, dass diese unabhängig von ihren spezifischen Repräsentationen identifiziert und manipuliert werden können \cite{Fielding:2000:REST}.
 
 
-\textbf{{\large Identifikation und Manipulation von Ressourcen}} \\
+\textbf{{ Identifikation und Manipulation von Ressourcen}} \\
 Die REST-Architektur nutzt Uniform Resource Identifiers (URIs), um Ressourcen zu identifizieren. URIs vereinen die Funktionen von URLs (zur Lokalisierung) und URNs (zur Benennung), wodurch die Flexibilität im Umgang mit Ressourcen erhöht wird, da sie eine klare und eindeutige Identifikation ermöglichen. 
 Die Identifikation durch URIs sollte sich nie auf spezifische Repräsentationen beziehen, sondern auf die konzeptuelle Einordnung der Ressource.
 Also eine URI soll keine Dateiendung wie "path/file.json" enthalten, um flexibel zu bleiben.
@@ -386,7 +386,7 @@ Die Manipulation von Ressourcen erfolgt über ihre Repräsentationen, wobei die 
 Dies unterstützt die Skalierbarkeit und Wartung von Webanwendungen, indem es Änderungen erleichtert, ohne dass bestehende Verweise angepasst werden müssen. \cite{Fielding:2000:REST}
 
 
-\textbf{{\large Selbstbeschreibende Nachrichten und HATEOAS}} \\
+\textbf{{ Selbstbeschreibende Nachrichten und HATEOAS}} \\
 Selbstbeschreibende Nachrichten gewährleisten, dass jede Anfrage oder Antwort so wenig Kontext wie möglich benötigt. 
 Durch die Verwendung standardisierter Methoden und explizite Angaben zur Cacheability in den Antworten fördert dies die Zustandslosigkeit von REST-Services.
 Die Einschränkung Hypermedia as the Engine of Application State (HATEOAS) zielt darauf ab, eine maximale Entkopplung zwischen Client und Server zu gewährleisten. 
