@@ -350,8 +350,10 @@ Leider zeigt die Praxis, dass viele als REST deklarierte Schnittstellen diesen A
 
 \subsection{Client-Server}
 
-Die erste Einschränkung ist die Client-Server Abstraktion.
-Nur wenn die User Interface Anliegen von den Server und Datenbank Anliegen getrennt werden, kann eine Benutzung von verschiedenen Plattformen, die Skalierbarkeit und unabhängige Weiterentwicklung von Server oder Client gewährleistet werden \cite{Fielding:2000:REST}.
+Die Client-Server-Abstraktion ist eine essenzielle Einschränkung im REST-Architekturstil, die die Benutzerschnittstelle (Client) von der Datenspeicherung und Geschäftslogik (Server) separiert. 
+Diese Trennung fördert die Möglichkeit, dass Benutzer über verschiedene Plattformen auf Anwendungen zugreifen können, während Serverfunktionen wie Datenmanagement und Verarbeitungslogik unabhängig weiterentwickelt und skaliert werden. 
+Dadurch wird nicht nur die Wartbarkeit und Anpassungsfähigkeit der Systeme erhöht, sondern auch eine Plattformunabhängigkeit gewährleistet, die eine breite Nutzerbasis anspricht. 
+Diese modulare Struktur unterstützt die Skalierbarkeit, indem sie die Verteilung von Lasten und die effiziente Ressourcennutzung ohne direkte Abhängigkeiten zwischen Client und Server ermöglicht, wie Fielding in seiner Arbeit „Architectural Styles and the Design of Network-based Software Architectures“ hervorhebt. \cite{Fielding:2000:REST}.
 
 
 \subsection{Zustandslos}
