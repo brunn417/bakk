@@ -336,11 +336,17 @@ Wohingegen Schnittstellen mit drei oder mehr Pfade in Richtung Create, Read, Upd
 
 \section{REST-APIs}
 
-Der Großteil aller Web-APIs werden als REST-Schnittstellen deklariert, obwohl nur ein minimaler Anteil tatsächlich die REST-Prinzipien erfüllt \cite{Neumann:2021:AnalysisOfRest}.
-Zwar setzen die meisten dieser Schnittstellen einige der REST-Aspekte um, aber erfüllen beinahe nie den in Roy Fieldings Dissertation im Jahr 2000 definierten Architekturstil REST \cite{Neumann:2021:AnalysisOfRest}.
-Eine Softwarearchitektur sind die Komponenten eines Softwaresystems, die voneinander abhängig sind und miteinander kommunizieren müssen, um ein funktionsfähiges Programm am laufen zu lassen \cite{Fielding:2000:REST}.
-Der Architekturstil gibt vor, welche architektonische Vorbedingungen erfüllt werden müssen, um ein System dem Stil zuordnen zu können \cite{Fielding:2000:REST}.
-Das Paradigma REST beinhaltet sechs solche Constraints.
+Obwohl viele Web-Schnittstellen als REST-APIs bezeichnet werden, erfüllen sie selten vollständig die in Roy Fieldings Dissertation definierten REST-Prinzipien \cite{Neumann:2021:AnalysisOfRest}. 
+In Wahrheit implementieren die meisten dieser Schnittstellen nur einige Aspekte von REST, ohne jedoch den vollständigen Architekturstil
+\footnote{
+	Eine Softwarearchitektur umfasst die strukturierten Komponenten eines Softwaresystems, die in Abhängigkeit zueinander stehen und miteinander kommunizieren müssen, um eine funktionierende Anwendung zu ermöglichen \cite{Fielding:2000:REST}. 
+	Der Architekturstil legt fest, welche architektonischen Voraussetzungen erfüllt sein müssen, damit ein System diesem Stil zugeordnet werden kann.
+}
+zu erreichen, den Fielding beschrieben hat \cite{Neumann:2021:AnalysisOfRest}.
+
+Das REST-Paradigma definiert sechs spezifische Einschränkungen, die eingehalten werden müssen, um als RESTful zu gelten. 
+Diese Prinzipien sind entscheidend, um die Vorteile von REST, wie Skalierbarkeit, Zustandslosigkeit und die Fähigkeit, unabhängige Dienste zu nutzen, vollständig auszuschöpfen. 
+Leider zeigt die Praxis, dass viele als REST deklarierte Schnittstellen diesen Anforderungen nicht gerecht werden, was oft zu Missverständnissen und ineffizienter Implementierung führt \cite{Neumann:2021:AnalysisOfRest}.
 
 
 
