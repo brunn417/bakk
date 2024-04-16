@@ -283,14 +283,14 @@ Hierbei wird der Datenaustausch über das Hypertext Transfer Protocol (HTTP) ode
 
 Die Designs von APIs unterliegen einer Vielzahl von Ansätzen, deren übergreifendes Ziel es ist, eine robuste und intuitiv bedienbare Schnittstelle zu entwickeln. 
 Im Zentrum steht der Entwurf einer API, die nicht nur in ihrer Lebensdauer beständig, sondern auch wartungsarm ist. 
-Eine effektive API zeichnet sich durch ihre Benutzerfreundlichkeit aus und bedarf keiner umfangreichen Dokumentation, da sie weitgehend selbsterklärend sein soll \cite{How2Design_good_API}.
+Eine effektive API zeichnet sich durch ihre Benutzerfreundlichkeit aus und bedarf keiner umfangreichen Dokumentation, da sie weitgehend selbsterklärend sein soll \cite{Bloch:2006:How2DesignGoodAPI}.
 
 Im Vorfeld der Entwicklung einer solchen Schnittstelle ist eine umfassende Anforderungsanalyse essenziell, um eine adäquate Erfüllung der spezifischen Ansprüche zu gewährleisten. 
 Mit der Weiterentwicklung der Anwendungsfälle muss auch die API in ihrer Funktionalität flexibel und adaptiv gestaltet sein, um zukünftigen Anforderungen gerecht zu werden. 
-Dies bedingt, dass die Weiterentwicklung der API stets unter Berücksichtigung dieser dynamischen Entwicklung erfolgt. \cite{How2Design_good_API}
+Dies bedingt, dass die Weiterentwicklung der API stets unter Berücksichtigung dieser dynamischen Entwicklung erfolgt. \cite{Bloch:2006:How2DesignGoodAPI}
 
 Des Weiteren spielen aussagekräftige Beispiele für die Nutzung der API eine grundlegende Rolle, um deren Leistungsfähigkeit und Anwendbarkeit zu veranschaulichen. 
-Die Klarheit in der Namensgebung ist ein weiterer kritischer Faktor, der die Zugänglichkeit und Verständlichkeit der API maßgeblich beeinflusst. Darüber hinaus ist es vorteilhaft, wenn alle Anfragen im String-Format verarbeitet werden können und die API konsistente sowie typgerechte Rückgabeformate liefert, um die Datenverarbeitung und Datenintegration zu vereinfachen. \cite{How2Design_good_API}
+Die Klarheit in der Namensgebung ist ein weiterer kritischer Faktor, der die Zugänglichkeit und Verständlichkeit der API maßgeblich beeinflusst. Darüber hinaus ist es vorteilhaft, wenn alle Anfragen im String-Format verarbeitet werden können und die API konsistente sowie typgerechte Rückgabeformate liefert, um die Datenverarbeitung und Datenintegration zu vereinfachen. \cite{Bloch:2006:How2DesignGoodAPI}
 
 
 \section{Anforderungen an die Schnittstelle}
@@ -318,20 +318,20 @@ Dabei werden insbesondere die Vor- und Nachteile verschiedener Technologien im K
 
 \section{Web-APIs}
 
-Die Nutzung von Web-Schnittstellen birgt Herausforderungen, insbesondere aufgrund des Fehlens einheitlicher Standards \cite{Standardizing_APIs}. 
+Die Nutzung von Web-Schnittstellen birgt Herausforderungen, insbesondere aufgrund des Fehlens einheitlicher Standards \cite{Alrashed:2021:StandardizingAPIs}. 
 Obwohl viele Webseiten Dritten den Zugang zu ihren Daten über Web-APIs gewähren, stellt die manuelle Erstellung von URLs -- einschließlich der Festlegung von Endpunkten, Parametern, Authentifizierungsprozessen und der Handhabung von Seitenumbrüchen -- eine erhebliche Hürde dar 
-\cite{Standardizing_APIs, Investigation_Web-APIs}. 
-Diese Prozesse erfordern ein tiefgehendes Verständnis und sind mit einem beträchtlichen Zeitaufwand verbunden \cite{Standardizing_APIs}. 
-Zudem verfügt eine große Anzahl dieser Web-APIs über individuelle Datenmodelle, die, obwohl sie häufig ähnliche Arten von Informationen verwalten, unterschiedliche Methoden und Eigenschaften auf ihre eigene Weise bereitstellen \cite{Standardizing_APIs}.
+\cite{Alrashed:2021:StandardizingAPIs, Maleshkova:2010:InvestigationWebAPIs}. 
+Diese Prozesse erfordern ein tiefgehendes Verständnis und sind mit einem beträchtlichen Zeitaufwand verbunden \cite{Alrashed:2021:StandardizingAPIs}. 
+Zudem verfügt eine große Anzahl dieser Web-APIs über individuelle Datenmodelle, die, obwohl sie häufig ähnliche Arten von Informationen verwalten, unterschiedliche Methoden und Eigenschaften auf ihre eigene Weise bereitstellen \cite{Alrashed:2021:StandardizingAPIs}.
 Um sich Zugang zu diesen Systemen zu ermöglichen, ist es notwendig, sich mit diesen im Voraus vertraut zu machen. 
-Jedoch wird dies durch die Vielfalt und oft inkonsistente Art der Dokumentation zusätzlich erschwert \cite{Investigation_Web-APIs}.
+Jedoch wird dies durch die Vielfalt und oft inkonsistente Art der Dokumentation zusätzlich erschwert \cite{Maleshkova:2010:InvestigationWebAPIs}.
 
 Eine umfangreiche empirische Studie von S. Serbout,  F. D. Lauro und C. Pautasso, die auf der IEEE International Conference on Software Architecture Workshops 2022 vorgestellt wurde, untersucht die Größe und Struktur von Web-API-Spezifikationen, die aus Open-Source-Repositories extrahiert wurden. Diese Web-APIs umfassen neben der Dokumentation der bereitgestellten Operationen auch Schemadefinitionen für den Datenaustausch bei API-Anfragen und API-Antworten. 
 Durch die Analyse von 42.194 gültigen OAS-Spezifikationen, die zwischen 2014 und 2021 veröffentlicht wurden und von bekannten Dienstanbietern wie Google, VMware (Avi Networks), Twilio und Amazon stammen, zeigt die Studie verschiedene Metriken auf. 
 Der Mittelwert über alle diese Schnittstellen ist 3,98 Pfade zu 5,23 Operationen. 
 Außerdem wurde eine Korrelation zwischen der Größe der API und Art des Designkonzeptes entdeckt. 
 So sind kleine Schnittstellen meißt nur Read-Only und in Remote Procedure Call (RPC) Stil implementiert. 
-Wohingegen Schnittstellen mit drei oder mehr Pfade in Richtung Create, Read, Update and Delete (CRUD) oder Representational State Transfer (REST) tendieren. \cite{Web-Api-Structures}
+Wohingegen Schnittstellen mit drei oder mehr Pfade in Richtung Create, Read, Update and Delete (CRUD) oder Representational State Transfer (REST) tendieren. \cite{Serbout:2022:WebApiStructures}
 
 
 \section{REST-APIs}
