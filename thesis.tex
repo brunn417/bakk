@@ -334,7 +334,7 @@ So sind kleine Schnittstellen meißt nur Read-Only und in Remote Procedure Call 
 Wohingegen Schnittstellen mit drei oder mehr Pfade in Richtung Create, Read, Update and Delete (CRUD) oder Representational State Transfer (REST) tendieren. \cite{Serbout:2022:WebApiStructures}
 
 
-\section{REST-APIs}
+\section{REST-APIs und REST-Constraints}
 
 Obwohl viele Web-Schnittstellen als REST-APIs bezeichnet werden, erfüllen sie selten vollständig die in Roy Fieldings Dissertation definierten REST-Prinzipien \cite{Neumann:2021:AnalysisOfRest}. 
 In Wahrheit implementieren die meisten dieser Schnittstellen nur einige Aspekte von REST, ohne jedoch den vollständigen Architekturstil
@@ -344,26 +344,58 @@ In Wahrheit implementieren die meisten dieser Schnittstellen nur einige Aspekte 
 }
 zu erreichen, den Fielding beschrieben hat \cite{Neumann:2021:AnalysisOfRest}.
 
-
-\subsection{REST-Constraints}
-
 Das REST-Paradigma definiert sechs spezifische Einschränkungen, die eingehalten werden müssen, um als RESTful zu gelten. 
 Diese Prinzipien sind entscheidend, um die Vorteile von REST, wie Skalierbarkeit, Zustandslosigkeit und die Fähigkeit, unabhängige Dienste zu nutzen, vollständig auszuschöpfen. 
 Leider zeigt die Praxis, dass viele als REST deklarierte Schnittstellen diesen Anforderungen nicht gerecht werden, was oft zu Missverständnissen und ineffizienter Implementierung führt \cite{Neumann:2021:AnalysisOfRest}.
 
-\textbf{{\large Client-Server}} \\
+\subsection{Client-Server}
+
 Die erste Einschränkung ist die Client-Server Abstraktion.
 Nur wenn die User Interface Anliegen von den Server und Datenbank Anliegen getrennt werden, kann eine Benutzung von verschiedenen Plattformen, die Skalierbarkeit und unabhängige Weiterentwicklung von Server oder Client gewährleistet werden \cite{Fielding:2000:REST}.
 
-\textbf{{\large Zustandslos}} \\
+
+\subsection{Zustandslos}
+
 Diese Einschränkung bezieht sich auf die Interaktion zwischen Client und Server und ist ein fundamentales Prinzip, das vorschreibt, dass jede Anfrage des Clients an den Server alle notwendigen Informationen beinhalten muss, um diese unabhängig von vorherigen Interaktionen zu verarbeiten. 
 Dieses Prinzip stellt sicher, dass der Server keine Zustandsinformationen speichern muss, wodurch die Abhängigkeit von einer Anfrage zur nächsten eliminiert wird.
 Aus architektonischer Sicht bietet die Zustandslosigkeit signifikante Vorteile bezüglich Visibilität, Zuverlässigkeit und Skalierbarkeit.
 Doch die Performanz kann darunter leider, da es zu mehrfachen Senden gleicher Informationen kommen kann. \cite{Fielding:2000:REST}
 
-\textbf{{\large Cache}} \\
+
+\subsection{Cache}
+
 Der Cache-Constraint gibt vor, dass Antworten des Servers als cacheable oder non-cacheable gekennzeichnet werden. 
 Dies ermöglicht es dem Client, Antworten für zukünftige Anfragen wiederzuverwenden, was potenziell zu erheblichen Leistungssteigerungen führen kann. Allerdings kann dies die Zuverlässigkeit beeinträchtigen, da die im Cache gespeicherten Daten möglicherweise nicht mehr mit den aktuellen Daten auf dem Server übereinstimmen. \cite{Fielding:2000:REST}
+
+
+\subsection{Uniform Interface}
+
+Die Haupteigenschaft vom REST-Architekturstil ist das Uniform Interface und wird durch vier untergeordnete Einschränkungen definiert, die gemeinsam das Konzept von Ressourcen und deren Repräsentationen prägen.
+
+\textbf{{\large Ressourcen und Repräsentationen}}
+Roy Fielding definiert eine Ressource als eine benennbare Information, die über eine zeitlich variable Funktion identifiziert wird. 
+Repräsentationen beschreibt Fielding als eine Byte-Sequenz, ergänzt durch Metadaten, die diese Bytes beschreiben. Die Repräsentation ist das, was als Antwort auf eine Ressourcenanforderung übermittelt wird.
+Diese entscheidende Trennung von Ressource und Repräsentation erleichtert die Verwaltung von Ressourcen, indem sie es ermöglicht, dass diese unabhängig von ihren spezifischen Repräsentationen identifiziert und manipuliert werden können \cite{Fielding:2000:REST}.
+
+
+\textbf{{\large Identifikation und Manipulation von Ressourcen}}
+Die REST-Architektur nutzt Uniform Resource Identifiers (URIs), um Ressourcen zu identifizieren. URIs vereinen die Funktionen von URLs (zur Lokalisierung) und URNs (zur Benennung), wodurch die Flexibilität im Umgang mit Ressourcen erhöht wird, da sie eine klare und eindeutige Identifikation ermöglichen. 
+Die Identifikation durch URIs sollte sich nie auf spezifische Repräsentationen beziehen, sondern auf die konzeptuelle Einordnung der Ressource.
+Also eine URI soll keine Dateiendung wie "path/file.json" enthalten, um flexibel zu bleiben.
+Die Manipulation von Ressourcen erfolgt über ihre Repräsentationen, wobei die Ressource selbst unverändert bleibt. 
+Dies unterstützt die Skalierbarkeit und Wartung von Webanwendungen, indem es Änderungen erleichtert, ohne dass bestehende Verweise angepasst werden müssen. \cite{Fielding:2000:REST}
+
+\textbf{{\large Selbstbeschreibende Nachrichten und HATEOAS}}
+Selbstbeschreibende Nachrichten gewährleisten, dass jede Anfrage oder Antwort so wenig Kontext wie möglich benötigt. 
+Durch die Verwendung standardisierter Methoden und explizite Angaben zur Cacheability in den Antworten fördert dies die Zustandslosigkeit von REST-Services.
+Die Einschränkung Hypermedia as the Engine of Application State (HATEOAS) zielt darauf ab, eine maximale Entkopplung zwischen Client und Server zu gewährleisten. 
+Sie erfordert, dass der Client keine Kenntnisse über die interne Struktur des Services benötigt, da alle Zustandsübergänge auf dem Server durch die Auswahl von durch den Server bereitgestellten Hyperlinks gesteuert werden. 
+Dies ermöglicht eine dynamische Navigation und Interaktion mit dem Service, was die Flexibilität und Erweiterbarkeit des Webservices erhöht. \cite{Fielding:2000:REST}
+
+Zusammenfassend bildet die Uniform Interface Constraint die Grundlage für eine modulare, erweiterbare und wartbare REST-Architektur, die durch ihre strikte Trennung von Ressourcen und Repräsentationen sowie durch die Förderung von selbstbeschreibenden und hypermedia-gesteuerten Interaktionen gekennzeichnet ist.
+
+
+
 
 
 
