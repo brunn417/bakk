@@ -24,6 +24,34 @@
 \usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
 
+\usepackage{listings}
+
+% Definieren der Sprache GraphQL für lstlisting
+\lstdefinelanguage{GraphQL}{
+	keywords={query, mutation, subscription, true, false, null},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywords={type, String, Int, Boolean, ID},
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	sensitive=false,
+	comment=[l]{\#},
+	morestring=[b]",
+	morestring=[b]',
+}
+
+\lstset{
+	language=GraphQL,
+	showstringspaces=false,
+	extendedchars=true,
+	basicstyle=\ttfamily\small,
+	showspaces=false,
+	showtabs=false,
+	frame=single,
+	tabsize=2,
+	breaklines=true,
+	showstringspaces=false
+}
+
 % Define convenience functions to use the author name and the thesis title in the PDF document properties.
 \newcommand{\authorname}{Paul Brunner} % The author name without titles.
 \newcommand{\thesistitle}{} % The title of the thesis. The English version should be used, if it exists.
@@ -457,24 +485,22 @@ Im folgenden Abschnitt zeig ich ein Beispiel einer GraphQL Anfrage und Antwort.
 Angenommen, wir haben eine Webanwendung mit Benutzer:innen, Posts und Kommentaren, die in verschiedenen Datenbanken gespeichert sind.
 Wollen wir nun ein Query, um für eine Person mit ID 17 alle Posts und Kommentare abzurufen, genügt in GraphQL eine einzige Anfrage.
 
-\begin{algorithm}
-	query GetUserProfileWithPostsAndComments(\$userId: 17) { \\
-		user(id: \%userId) { \\
-			name \\
-			email \\
-			posts { \\
-				title \\
-				date \\
-			} \\
-			comments { \\
-				authorOfPost \\
-				date \\
-			} \\
-		} \\
-	} \\
-	\caption{GraphQL-Anfrage}
-	\label{alg:graphql-request}
-\end{algorithm}
+\begin{lstlisting}[language=GraphQL]
+	query GetUserProfileWithPostsAndComments($userId: ID!) {
+		user(id: $userId) {
+			name
+			email
+			posts {
+				title
+				date
+				comments {
+					authorOfPost
+					date
+				}
+			}
+		}
+	}
+\end{lstlisting}
 
 
 
