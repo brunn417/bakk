@@ -458,20 +458,20 @@ Angenommen, wir haben eine Webanwendung mit Benutzer:innen, Posts und Kommentare
 Wollen wir nun ein Query, um für eine Person mit ID 17 alle Posts und Kommentare abzurufen, genügt in GraphQL eine einzige Anfrage.
 
 \begin{algorithm}
-	query GetUserProfileWithPostsAndComments(\$userId: 17) {
-		user(id: \%userId) {
-			name
-			email
-			posts {
-				title
-				date
-			}
-			comments {
-				authorOfPost
-				date
-			}
-		}
-	}
+	query GetUserProfileWithPostsAndComments(\$userId: 17) { \\
+		user(id: \%userId) { \\
+			name \\
+			email \\
+			posts { \\
+				title \\
+				date \\
+			} \\
+			comments { \\
+				authorOfPost \\
+				date \\
+			} \\
+		} \\
+	} \\
 	\caption{GraphQL-Anfrage}
 	\label{alg:graphql-request}
 \end{algorithm}
