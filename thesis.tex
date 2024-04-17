@@ -547,11 +547,11 @@ In diesem Abschnitt werden die zwei Technologien miteinander verglichen und erwo
 
 \subsection{Effizienz}
 
-Generell sind REST und GraphQL bei POST- und PUT-Abfragen performant ausgeglichen, jedoch unterscheiden sie sich bei GET-Abfragen signifikant \cite{Vohra:2022:GraphVsRestImplementation}.
-So zeigt sich, dass GraphQL ein überlegene Performance bei komplexen Abfragen aufweist. 
-Bei Abfragen mit vier Endpunkten und 1000 Key-Value Paaren ist die GraphQL-Antwort bereits 16 mal schneller, und bei mehr als fünf Endpunkten bis zu 180 mal schneller \cite{Quinamera:2023:GraphMappingStudy}.
-Wird jedoch das Multiplexing-Feature von HTTP/2 angewendet, können mehrere Anfragen oder Methoden gleichzeitig an jedem Endpunkt ausgeführt werden, was zu einer besseren Antwortzeit für REST führt \cite{Lawi:2021:GraphVsRestPerformance}.
-So kann REST bei Tests, die auf Geschwindigkeit und Durchsatz ausgelegt sind, mit einer bis zu 50\% schnelleren Antwortzeit punkten \cite{Lawi:2021:GraphVsRestPerformance}.
+Generell sind REST und GraphQL bei POST- und PUT-Abfragen performant ausgeglichen, jedoch zeigen sie bei GET-Abfragen signifikante Unterschiede \cite{Vohra:2022:GraphVsRestImplementation}.
+Es zeigt sich, dass GraphQL eine überlegene Performance bei komplexen Abfragen aufweist.
+Bei Abfragen mit vier Endpunkten und 1000 Key-Value Paaren ist die Antwort von GraphQL bereits 16-mal schneller und bei mehr als fünf Endpunkten bis zu 180-mal schneller \cite{Quinamera:2023:GraphMappingStudy}.
+Wird jedoch das Multiplexing-Feature von HTTP/2 angewendet, können mehrere Anfragen oder Methoden gleichzeitig an jedem Endpunkt ausgeführt werden, was zu besseren Antwortzeiten für REST führt \cite{Lawi:2021:GraphVsRestPerformance}.
+So kann REST bei Tests, die auf Geschwindigkeit und Durchsatz ausgerichtet sind und Multiplexing verwenden, mit einer bis zu 50 \% schnelleren Antwortzeit punkten \cite{Lawi:2021:GraphVsRestPerformance}.
 
  
 
