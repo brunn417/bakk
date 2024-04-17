@@ -491,7 +491,6 @@ Wollen wir nun für eine Person mit ID 17 alle Posts und Kommentare abrufen, gen
 		caption={GraphQL-Anfrage}, 
 		label={alg:graphql-request}
 	]
-	query GetUserProfileWithPostsAndComments($userId: ID!) {
 		user(id: 17) {
 			name
 			email
@@ -506,9 +505,7 @@ Wollen wir nun für eine Person mit ID 17 alle Posts und Kommentare abrufen, gen
 				}
 			}
 		}
-	}
-	\caption{GraphQL Anfrage}
-	\ref{alg:graphql-request}
+	
 \end{lstlisting}
 
 
