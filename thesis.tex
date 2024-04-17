@@ -394,6 +394,7 @@ Dies unterstützt die Skalierbarkeit und Wartung von Webanwendungen, indem es Ä
 
 Selbstbeschreibende Nachrichten gewährleisten, dass jede Anfrage oder Antwort so wenig Kontext wie möglich benötigt. 
 Durch die Verwendung standardisierter Methoden und explizite Angaben zur Cacheability in den Antworten fördert dies die Zustandslosigkeit von REST-Services.
+
 Die Einschränkung Hypermedia as the Engine of Application State (HATEOAS) zielt darauf ab, eine maximale Entkopplung zwischen Client und Server zu gewährleisten. 
 Sie erfordert, dass der Client keine Kenntnisse über die interne Struktur des Services benötigt, da alle Zustandsübergänge auf dem Server durch die Auswahl von durch den Server bereitgestellten Hyperlinks gesteuert werden. 
 Dies ermöglicht eine dynamische Navigation und Interaktion mit dem Service, was die Flexibilität und Erweiterbarkeit des Webservices erhöht. \cite{Fielding:2000:REST}
@@ -428,34 +429,51 @@ In der folgenden Auflistung werden die einzelnen Einschränkungen wiederholt auf
 \begin{enumerate}
 	\item \textbf{Client-Server}: Strikte Trennung von Client und Server Anliegen
 	\item \textbf{Zustandslos}: Jede Client-Anfrage beinhaltet alle notwendigen Informationen
+	\item \textbf{Cache}: Alle Server-Antworten mit (non-)cacheable deklarieren
+	\item \textbf{Uniform Interface} 
+		\subitem \textbf{Identification of Resources}: Jede Ressource hat einen eindeutigen Identifikator (URI)
+		\subitem \textbf{Manipulation of Resources through Representations}: Veränderungen ausschließlich über Repräsentationen
+		\subitem \textbf{Self-descriptive Messages}: Jede Nachricht kann für sich selbst stehen
+		\subitem \textbf{HATEOAS}: Dynamische Client-Interaktionen durch Hyperlinks in Serverantworten
+	\item \textbf{Layered System}: Geschichtete und voneinander isolierte Architektur
+	\item \textbf{Code-On-Demand}: Server können ausführbaren Code an Client senden
 \end{enumerate}
 
-\begin{table}[h]
-	\centering
-	
-	\begin{tabular}{ll|l}
-		
-		1   & Client-Server       & Strikte Trennung von Client und Server Anliegen \\
-		\hline
-		2   & Zustandslos         & Jede Client-Anfrage beinhaltet alle notwendigen Informationen \\
-		\hline 
-		3   & Cache      		  & Alle Server-Antworten mit (non-)cacheable deklarieren \\
-		\hline
-		4   & Uniform Interface \\
-		4.1 & Ressources          & some text \\
-		4.2 & Representations     & some text \\
-		4.3 & Selbstbeschreibend  & some text \\
-		4.4 & HATEOAS             & some text \\
-		\hline
-		5   & Layered System      & some text \\
-		\hline
-		6   & Code-On-Demand      & some text \\
-		
-	\end{tabular}
-	
-	\caption{REST-Constraints}
-	\label{tab:REST-Constraints}
-\end{table}
+
+
+
+
+
+
+
+
+
+%\begin{table}[h]
+%	\centering
+%	
+%	\begin{tabular}{ll|l}
+%		
+%		1   & Client-Server       & Strikte Trennung von Client und Server Anliegen \\
+%		\hline
+%		2   & Zustandslos         & Jede Client-Anfrage beinhaltet alle notwendigen Informationen \\
+%		\hline 
+%		3   & Cache      		  & Alle Server-Antworten mit (non-)cacheable deklarieren \\
+%		\hline
+%		4   & Uniform Interface \\
+%		4.1 & Ressources          & some text \\
+%		4.2 & Representations     & some text \\
+%		4.3 & Selbstbeschreibend  & some text \\
+%		4.4 & HATEOAS             & some text \\
+%		\hline
+%		5   & Layered System      & some text \\
+%		\hline
+%		6   & Code-On-Demand      & some text \\
+%		
+%	\end{tabular}
+%	
+%	\caption{REST-Constraints}
+%	\label{tab:REST-Constraints}
+%\end{table}
 
 
 
