@@ -23,7 +23,7 @@
 \usepackage{todonotes} % Provides tooltip-like todo notes.
 \usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
-\usepackage{minted}
+
 \usepackage{listings}
 
 % Definieren der Sprache GraphQL für lstlisting
@@ -483,18 +483,20 @@ Dies unterstützt die Entwicklung und Validierung von Client-Anfragen.
 
 Im folgenden Abschnitt zeig ich ein Beispiel einer GraphQL Anfrage und Antwort.
 Angenommen, wir haben eine Webanwendung mit Benutzer:innen, Posts und Kommentaren, die in verschiedenen Datenbanken gespeichert sind.
-Wollen wir nun ein Query, um für eine Person mit ID 17 alle Posts und Kommentare abzurufen, genügt in GraphQL eine einzige Anfrage.
+Wollen wir nun für eine Person mit ID 17 alle Posts und Kommentare abrufen, genügt in GraphQL eine einzige Anfrage, die wie folgt aussieht.
 
 \begin{lstlisting}[language=GraphQL]
 	query GetUserProfileWithPostsAndComments($userId: ID!) {
-		user(id: $userId) {
+		user(id: 17) {
 			name
 			email
 			posts {
 				title
 				date
 				comments {
-					authorOfPost
+					authorOfPost {
+						name
+					}
 					date
 				}
 			}
@@ -502,22 +504,7 @@ Wollen wir nun ein Query, um für eine Person mit ID 17 alle Posts und Kommentar
 	}
 \end{lstlisting}
 
-\begin{minted}{graphql}
-	query GetUserProfileWithPostsAndComments($userId: ID!) {
-		user(id: $userId) {
-			name
-			email
-			posts {
-				title
-				date
-				comments {
-					authorOfPost
-					date
-				}
-			}
-		}
-	}
-\end{minted}
+
 
 
 
