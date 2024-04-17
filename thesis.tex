@@ -485,7 +485,7 @@ Im folgenden Abschnitt zeig ich ein Beispiel einer GraphQL Anfrage und Antwort.
 Angenommen, wir haben eine Webanwendung mit Benutzer:innen, Posts und Kommentaren, die in verschiedenen Datenbanken gespeichert sind.
 Wollen wir nun für eine Person mit ID 17 alle Posts und Kommentare abrufen, genügt in GraphQL eine einzige Anfrage, die wie folgt aussieht.
 
-\begin{lstlisting}[language=GraphQL]
+\begin{lstlisting}[language=GraphQL,caption={GraphQL-Anfrage}]
 	query GetUserProfileWithPostsAndComments($userId: ID!) {
 		user(id: 17) {
 			name
