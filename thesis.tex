@@ -483,7 +483,7 @@ Dies unterstützt die Entwicklung und Validierung von Client-Anfragen.
 
 Im folgenden Abschnitt zeig ich ein Beispiel einer GraphQL \hyperref[alg:graphql-request]{Anfrage} und Antwort.
 Angenommen, wir haben eine Webanwendung mit Benutzer:innen, Posts und Kommentaren, die in verschiedenen Datenbanken gespeichert sind.
-Wollen wir nun für eine Person mit ID 17 alle Posts und Kommentare abrufen, genügt in GraphQL eine einzige Anfrage, die wie folgt aussieht.
+Wollen wir nun für eine Person mit ID 42 alle Posts und Kommentare abrufen, genügt in GraphQL eine einzige Anfrage, die wie folgt aussieht.
 
 \renewcommand{\lstlistingname}{Algorithmus}
 \begin{lstlisting}[
@@ -491,13 +491,14 @@ Wollen wir nun für eine Person mit ID 17 alle Posts und Kommentare abrufen, gen
 		caption={GraphQL-Anfrage}, 
 		label={alg:graphql-request}
 	]
-		user(id: 17) {
+		user(id: 42) {
 			name
 			email
 			posts {
 				title
 				date
 				comments {
+					text
 					authorOfPost {
 						name
 					}
@@ -505,7 +506,35 @@ Wollen wir nun für eine Person mit ID 17 alle Posts und Kommentare abrufen, gen
 				}
 			}
 		}
-	
+\end{lstlisting}
+
+Die Server-Antwort auf die Anfrage wäre wie folgt.
+
+\renewcommand{\lstlistingname}{Algorithmus}
+\begin{lstlisting}[
+	language=GraphQL, 
+	caption={GraphQL-Antwort}, 
+	label={alg:graphql-response}
+	]
+	"user" {
+		"name": "Zaphod",
+		"email": "zaphod@mail.univer.se",
+		"posts": [
+			{
+				"title": "Answer is",
+				"date": "2000-01-01",
+				"comments": [
+					{
+						"text": "42"
+						"authorOfPost": {
+							"name": "Trillian2
+						},
+						"date": "2000-01-02"
+					}
+				]
+			}
+		]
+	}
 \end{lstlisting}
 
 
