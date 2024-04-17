@@ -453,6 +453,48 @@ Kern von GraphQL ist das Typensystem, das es ermöglicht, präzise die Struktur 
 Eine weiteres Merkmal von GraphQL ist die Introspektionsfähigkeit, welche eine Selbstbeschreibung des Schemas ermöglicht.
 Dies unterstützt die Entwicklung und Validierung von Client-Anfragen.
 
+Im folgenden Abschnitt zeig ich ein Beispiel einer GraphQL Anfrage und Antwort.
+Angenommen, wir haben eine Webanwendung mit Benutzer:innen, Posts und Kommentaren, die in verschiedenen Datenbanken gespeichert sind.
+Wollen wir nun ein Query, um für eine Person mit ID 17 alle Posts und Kommentare abzurufen, genügt in GraphQL eine einzige Anfrage.
+
+\begin{algorithm}
+	query GetUserProfileWithPostsAndComments(\$userId: 17) {
+		user(id: \%userId) {
+			name
+			email
+			posts {
+				title
+				date
+			}
+			comments {
+				authorOfPost
+				date
+			}
+		}
+	}
+	\caption{GraphQL-Anfrage}
+	\label{alg:graphql-request}
+\end{algorithm}
+
+
+
+%\begin{algorithm}
+%	\SetKw{BreakFor}{break for}
+%	\KwIn{A scalar~$\epsilon$, a matrix $\mathbf{A} = (a_{ij})$, a vector $\vec{b}$, and an initial vector $\vec{x}^{(0)}$}
+%	\KwOut{$\vec{x}^{(n)}$ with $\mathbf{A} \vec{x}^{(n)} \approx \vec{b}$}
+%	\For{$k\leftarrow 1$ \KwTo maximum iterations}
+%	{
+%		\For{$i\leftarrow 1$ \KwTo $n$}
+%		{
+%			$x_i^{(k)} = \frac{1}{a_{ii}} \left(b_i-\sum_{j<i} a_{ij} x_j^{(k)} - \sum_{j>i} a_{ij} x_j^{(k-1)} \right)$\;
+%		}
+%		\If{$\lvert\vec{x}^{(k)}-\vec{x}^{(k-1)}\rvert < \epsilon$}
+%		{\BreakFor\;}
+%	}
+%	\Return{$\vec{x}^{(k)}$\;}
+%	\caption{Gauss-Seidel}
+%	\label{alg:gauss-seidel} % \label has to be placed AFTER \caption to produce correct cross-references.
+%\end{algorithm}
 
 
 3. über graphql +/-
