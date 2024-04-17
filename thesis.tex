@@ -539,31 +539,61 @@ Betrachtet man die JSON-Antwort als Key-Value Paare, kann man erkennen, dass die
 \section{Vergleich zwischen GraphQL und REST}
 
 Der Großteil aller Web-Schnittstellen verwendet den REST-Architekturstil, auch wie bereits oben erläutert, nur ein geringer Anteil tatsächlich alle REST-Einschränkungen umsetzt.
-Der zweite große, und immer mehr Anteil gewinnende, Player ist GraphQL.
+Der zweite große und immer mehr Anteil gewinnende Player ist GraphQL.
+Im Vergleich zwischen GraphQL und REST ergeben sich mehrere signifikante Unterschiede, die insbesondere in den Bereichen Performance, Flexibilität der Abfragen, Benutzerfreundlichkeit und Wartbarkeit deutlich werden. 
+Diese Differenzen machen sich vor allem bei komplexen Datenanforderungen bemerkbar.
 In diesem Abschnitt werden die zwei Technologien miteinander verglichen und erwogen, welche der beiden die bessere Lösung für die benötigte Schnittstelle ist.
 
 
-\subsection{Performanz}
+\subsection{Effizienz}
+
+Generell sind REST und GraphQL bei POST- und PUT-Abfragen performant ausgeglichen, jedoch unterscheiden sie sich bei GET-Abfragen signifikant \cite{Vohra:2022:GraphVsRestImplementation}.
+So zeigt sich, dass GraphQL ein überlegene Performance bei komplexen Abfragen aufweist. 
+Bei Abfragen mit vier Endpunkten und 1000 Key-Value Paaren ist die GraphQL-Antwort bereits 16 mal schneller, und bei mehr als fünf Endpunkten bis zu 180 mal schneller \cite{Quinamera:2023:GraphMappingStudy}.
+Wird jedoch das Multiplexing-Feature von HTTP/2 angewendet, können mehrere Anfragen oder Methoden gleichzeitig an jedem Endpunkt ausgeführt werden, was zu einer besseren Antwortzeit für REST führt \cite{Lawi:2021:GraphVsRestPerformance}.
+So kann REST bei Tests, die auf Geschwindigkeit und Durchsatz ausgelegt sind, mit einer bis zu 50\% schnelleren Antwortzeit punkten \cite{Lawi:2021:GraphVsRestPerformance}.
+
+ 
 
 
 
 
-
-
-
-
-Derzeit dominieren zwei Technologien die Web-API-Entwicklug: REST und GraphQL. Generell
-sind Rest und GraphQL bei POST- und PUT-Abfragen performant ausgeglichen, jedoch bei
-GET-Abfragen unterscheiden sie sich signifikant[4]. Diese Unterschiede lassen sich haupts¨achlich
-darauf zur¨uckf¨uhren, dass REST-Implementierungen typischerweise mehrere festgelegte Endpunkte
-ben¨otigen, um Daten aus verschiedenen Ressourcen abzurufen[3]. Im Gegensatz dazu
-nutzt GraphQL einen einzigen, flexiblen Endpunkt, der komplexe Datenabfragen effizient verarbeiten
-kann[3]. Diese Architektur erm¨oglicht es GraphQL, den Herausforderungen des Over- und
-Underfetchings entgegenzuwirken, welche bei REST-basierten APIs h¨aufig auftreten [3]. Eine
-Studie von Lawi et al.,[5] zeigte, dass REST bis zu 50% schneller als GraphQL antwortet und
-37% h¨oheren Durchsatz erzielt. Allerdings GraphQL 37% weniger CPU-Rechenleistung und 39%
-weniger Speicherbelegung beansprucht[5].
-Eine im Zuge dieser Arbeit durchgef¨uhrten Anforderungsanalyse wird
+%Vorteile von GraphQL gegenüber REST:
+%
+%Optimierte Performance bei komplexen Abfragen:
+%
+%Effizienz: GraphQL zeigt eine überlegene Performance bei komplexen Abfragen, die mehrere Endpunkte umfassen. Beispielsweise ist GraphQL bis zu 187-mal schneller als REST bei Abfragen, die mehr als fünf Endpunkte betreffen. Diese Geschwindigkeitssteigerung resultiert aus der Möglichkeit, mehrere Datenanforderungen in einer einzigen Anfrage zu bündeln, was mehrere Round-Trips zum Server erspart.
+%Reduktion von Over- und Under-fetching: Eines der Hauptprobleme bei REST ist das häufige Over- und Under-fetching von Daten. GraphQL adressiert dieses Problem effektiv, indem es den Clients erlaubt, genau zu spezifizieren, welche Daten sie benötigen. Dies führt zu einer signifikanten Reduktion der Antwortgrößen und damit verbundenen Ladezeiten.
+%Flexibilität und Dynamik bei der Abfragegestaltung:
+%
+%Dynamische Abfragen: GraphQL ermöglicht eine hohe Flexibilität bei der Gestaltung von Abfragen. Clients können die Struktur der Anfrage dynamisch anpassen und genau die Felder anfordern, die sie benötigen. Dies reduziert nicht nur die übertragenen Datenmengen, sondern erleichtert auch die Entwicklung, da Frontend-Entwickler weniger Abhängigkeiten vom Backend haben und schneller auf Änderungen reagieren können.
+%Schema- und Typenprüfung: GraphQL verwendet stark typisierte Schemata, die eine genaue Prüfung der Abfragen vor ihrer Ausführung ermöglichen. Dies trägt zur Robustheit der API bei und vermindert Laufzeitfehler.
+%Nachteile von GraphQL gegenüber REST:
+%
+%Performance bei einfachen Abfragen:
+%
+%Bei einfachen Abfragen, die nur einen Endpunkt betreffen, kann GraphQL langsamer als REST sein. Dies ist vor allem darauf zurückzuführen, dass der Overhead durch das GraphQL-System bei solch simplen Anforderungen nicht durch entsprechende Vorteile gerechtfertigt wird.
+%Komplexität der Schema-Verwaltung:
+%
+%Komplexität der Schemata: Große und komplexe Schemata können schwer zu verwalten und zu verstehen sein, insbesondere bei der Implementierung von komplexen Abfragen. Dies kann die Einarbeitungszeit für neue Entwickler erhöhen und die Fehleranfälligkeit steigern.
+%Verwaltung von Versionskonflikten und Schemawandel: Obwohl GraphQL das Versionsmanagement vereinfacht, indem es keine strengen Versionsnummern benötigt, kann der Umgang mit Änderungen im Schema immer noch herausfordernd sein, besonders wenn es um die Aufrechterhaltung der Abwärtskompatibilität geht.
+%Cache-Handling:
+%
+%Das Caching in GraphQL ist komplexer als in REST, da GraphQL standardmäßig kein HTTP-Caching verwendet. Dies erfordert die Implementierung spezieller Caching-Strategien, was die Entwicklung und Wartung der API erschweren kann.
+%Zusammengefasst bietet GraphQL bedeutende Vorteile bei komplexen Datenstrukturen und Anforderungen, wo es seine Stärken in der Performance und Flexibilität voll ausspielen kann. REST bleibt jedoch eine robuste Wahl für einfachere Anwendungen, wo weniger komplexe Datenstrukturen und striktes Caching gefordert sind. Insgesamt hängt die Wahl zwischen GraphQL und REST stark von den spezifischen Anforderungen des Projekts ab.
+%
+%Derzeit dominieren zwei Technologien die Web-API-Entwicklug: REST und GraphQL. Generell
+%sind Rest und GraphQL bei POST- und PUT-Abfragen performant ausgeglichen, jedoch bei
+%GET-Abfragen unterscheiden sie sich signifikant[4]. Diese Unterschiede lassen sich haupts¨achlich
+%darauf zur¨uckf¨uhren, dass REST-Implementierungen typischerweise mehrere festgelegte Endpunkte
+%ben¨otigen, um Daten aus verschiedenen Ressourcen abzurufen[3]. Im Gegensatz dazu
+%nutzt GraphQL einen einzigen, flexiblen Endpunkt, der komplexe Datenabfragen effizient verarbeiten
+%kann[3]. Diese Architektur erm¨oglicht es GraphQL, den Herausforderungen des Over- und
+%Underfetchings entgegenzuwirken, welche bei REST-basierten APIs h¨aufig auftreten [3]. Eine
+%Studie von Lawi et al.,[5] zeigte, dass REST bis zu 50% schneller als GraphQL antwortet und
+%37% h¨oheren Durchsatz erzielt. Allerdings GraphQL 37% weniger CPU-Rechenleistung und 39%
+%weniger Speicherbelegung beansprucht[5].
+%Eine im Zuge dieser Arbeit durchgef¨uhrten Anforderungsanalyse wird
 
 4. rest vs graphql
 \cite{Quinamera:2023:GraphMappingStudy}
