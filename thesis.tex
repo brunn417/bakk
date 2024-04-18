@@ -648,7 +648,16 @@ Obwohl GraphQL es ermöglicht, komplexe Datenabfragen in einzelnen Queries durch
 Daher kann die Einarbeitungszeit für neue User höher sein und die Fehleranfälligkeit zunehmen, im Vergleich zu einer gut strukturierten und übersichtlichen REST-Schnittstelle. \cite{Quinamera:2023:GraphMappingStudy}
 
 
+\subsection{Cache}
 
+Caching-Strategien spielen eine entscheidende Rolle bei der Leistungsfähigkeit von Webanwendungen. 
+REST und GraphQL verfolgen jedoch unterschiedliche Herangehensweisen. 
+REST nutzt bereits vorhandene HTTP-Caching-Mechanismen, da es auf einheitlichen HTTP-Methoden aufgebaut ist. 
+Auf diese Weise lassen sich Antworten auf GET-Anfragen problemlos in Standard-HTTP-Caches speichern. 
+Dies führt zu einer Verringerung der Serverlast und einer Verbesserung der Antwortzeiten durch die Zwischenspeicherung und Wiederverwendung von oft angeforderten Daten. 
+GraphQL hingegen ist nicht standardmäßig mit HTTP-Caching ausgestattet.
+Aufgrund der enormen Anpassungsfähigkeit jeder GraphQL-Anfrage sind die Anforderungen häufig individuell und entsprechen somit keiner effizienten herkömmlichen Caching-Strategie.
+Die Implementierung spezieller Caching-Strategien für GraphQL kann es schwierig machen, die API zu entwickeln und zu warten. \cite{Ala:2022:GraphVsRestCaching}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
