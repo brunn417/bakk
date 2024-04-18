@@ -621,8 +621,8 @@ und Underfetching
 , welches GraphQL effektiv adressiert, indem es dem Client erlaubt, in nur einer Query genau zu spezifizieren, welche Daten benötigt werden \cite{Brito:2019:MigratingToGraphQL}. 
 Dies führt zu einer Reduktion der Antwortgrößen um bis zu 90 \% und somit zu der oben angeführten Steigerung der Performance \cite{Brito:2019:MigratingToGraphQL}.
 
-Wird jedoch das Multiplexing-Feature von HTTP/2 angewendet, können mehrere Anfragen oder Methoden gleichzeitig an jedem Endpunkt ausgeführt werden, was wiederum zu besseren Antwortzeiten für REST führt \cite{Lawi:2021:GraphVsRestPerformance}.
-So kann REST bei Tests, die auf Geschwindigkeit und Durchsatz ausgerichtet sind und Multiplexing verwenden, mit einer bis zu 50 \% schnelleren Antwortzeit aufzeigen \cite{Lawi:2021:GraphVsRestPerformance}.
+Wird jedoch das Multiplexing-Feature von HTTP/2 angewendet, können mehrere Anfragen oder Methoden gleichzeitig an jedem Endpunkt ausgeführt werden, was wiederum zu besseren Antwortzeiten für REST führt.
+So kann REST bei Tests, die auf Geschwindigkeit und Durchsatz ausgerichtet sind und Multiplexing verwenden, mit einer bis zu 50 \% schnelleren Antwortzeit aufzeigen. \cite{Lawi:2021:GraphVsRestPerformance}
 
 Auch wenn die Abfragen weniger komplex sind, weist REST eine geringere Antwortzeit auf. 
 Dies betrifft abfragen, wo nur ein oder zwei Endpunkte angesteuert werden und somit der GraphQL Overhead nicht ausgeglichen wird. \cite{Quinamera:2023:GraphMappingStudy}
@@ -642,7 +642,11 @@ Um das oben angeführte Beispiel für eine \hyperref[alg:graphql-request]{GraphQ
 
 \subsection{Bedienbarkeit}
 
-GraphQL hat durch seine sehr starke Typisierung gewisse Vorteile in der Verwendung, da schon vor der Abfrage genaue Typ-Prüfungen gemacht werden, welche zu einer Reduktion der Laufzeitfehler führen.
+GraphQL bietet aufgrund seiner strengen Typisierung signifikante Vorteile, da bereits vor der Ausführung einer Abfrage genaue Typüberprüfungen stattfinden, die zur Reduzierung von Laufzeitfehlern beitragen \cite{Brito:2019:MigratingToGraphQL}. 
+Auf der anderen Seite erhöht jedoch die Komplexität der Anfragen die Anforderungen an das Verständnis der Datenstruktur durch die Benutzenden. 
+Obwohl GraphQL es ermöglicht, komplexe Datenabfragen in einzelnen Queries durchzuführen, setzt dies voraus, dass die Nutzenden die Datenstruktur vollständig verstehen. 
+Daher kann die Einarbeitungszeit für neue User höher sein und die Fehleranfälligkeit zunehmen, im Vergleich zu einer gut strukturierten und übersichtlichen REST-Schnittstelle. \cite{Quinamera:2023:GraphMappingStudy}
+
 
 
 
