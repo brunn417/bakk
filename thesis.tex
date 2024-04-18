@@ -661,52 +661,17 @@ Aufgrund der enormen Anpassungsfähigkeit jeder GraphQL-Anfrage sind die Anforde
 Die Implementierung spezieller Caching-Strategien für GraphQL kann es schwierig machen, die API zu entwickeln und zu warten \cite{Ala:2022:GraphVsRestCaching}.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% TODO die unten auskommentierten punkte einbauen.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Zusammenfassung}
 
+REST und GraphQL zeigen im direkten Vergleich, dass beide Technologien ihre spezifischen Stärken und Schwächen in Bezug auf Effizienz, Flexibilität, Benutzerfreundlichkeit und Caching haben. 
+In Bereich der Performance hat GraphQL bei komplexeren Abfragen in den oben referenzierten Studien besser abgeschlossen, dafür kann es sich als sehr kompliziert erweisen, eine sinnvolle Caching-Strategie für GraphQL zu implementieren, was hingegen bei REST mittels HTTP-Caching ersichtlich simpler funktioniert. 
+Die strenge Typisierung bei GraphQL verspricht zwar eine Reduzierung von Laufzeitfehler, doch setzt es auch ein tieferes Verständnis für die Datenstruktur voraus.
 
-%Vorteile von GraphQL gegenüber REST:
-%
-%Optimierte Performance bei komplexen Abfragen:
-%
-%Effizienz: GraphQL zeigt eine überlegene Performance bei komplexen Abfragen, die mehrere Endpunkte umfassen. Beispielsweise ist GraphQL bis zu 187-mal schneller als REST bei Abfragen, die mehr als fünf Endpunkte betreffen. Diese Geschwindigkeitssteigerung resultiert aus der Möglichkeit, mehrere Datenanforderungen in einer einzigen Anfrage zu bündeln, was mehrere Round-Trips zum Server erspart.
-%Reduktion von Over- und Under-fetching: Eines der Hauptprobleme bei REST ist das häufige Over- und Under-fetching von Daten. GraphQL adressiert dieses Problem effektiv, indem es den Clients erlaubt, genau zu spezifizieren, welche Daten sie benötigen. Dies führt zu einer signifikanten Reduktion der Antwortgrößen und damit verbundenen Ladezeiten.
-%Flexibilität und Dynamik bei der Abfragegestaltung:
-%
-%Dynamische Abfragen: GraphQL ermöglicht eine hohe Flexibilität bei der Gestaltung von Abfragen. Clients können die Struktur der Anfrage dynamisch anpassen und genau die Felder anfordern, die sie benötigen. Dies reduziert nicht nur die übertragenen Datenmengen, sondern erleichtert auch die Entwicklung, da Frontend-Entwickler weniger Abhängigkeiten vom Backend haben und schneller auf Änderungen reagieren können.
-%Schema- und Typenprüfung: GraphQL verwendet stark typisierte Schemata, die eine genaue Prüfung der Abfragen vor ihrer Ausführung ermöglichen. Dies trägt zur Robustheit der API bei und vermindert Laufzeitfehler.
-%Nachteile von GraphQL gegenüber REST:
-%
-%Performance bei einfachen Abfragen:
-%
-%Bei einfachen Abfragen, die nur einen Endpunkt betreffen, kann GraphQL langsamer als REST sein. Dies ist vor allem darauf zurückzuführen, dass der Overhead durch das GraphQL-System bei solch simplen Anforderungen nicht durch entsprechende Vorteile gerechtfertigt wird.
-%Komplexität der Schema-Verwaltung:
-%
-%Komplexität der Schemata: Große und komplexe Schemata können schwer zu verwalten und zu verstehen sein, insbesondere bei der Implementierung von komplexen Abfragen. Dies kann die Einarbeitungszeit für neue Entwickler erhöhen und die Fehleranfälligkeit steigern.
-%Verwaltung von Versionskonflikten und Schemawandel: Obwohl GraphQL das Versionsmanagement vereinfacht, indem es keine strengen Versionsnummern benötigt, kann der Umgang mit Änderungen im Schema immer noch herausfordernd sein, besonders wenn es um die Aufrechterhaltung der Abwärtskompatibilität geht.
-%Cache-Handling:
-%
-%Das Caching in GraphQL ist komplexer als in REST, da GraphQL standardmäßig kein HTTP-Caching verwendet. Dies erfordert die Implementierung spezieller Caching-Strategien, was die Entwicklung und Wartung der API erschweren kann.
-%Zusammengefasst bietet GraphQL bedeutende Vorteile bei komplexen Datenstrukturen und Anforderungen, wo es seine Stärken in der Performance und Flexibilität voll ausspielen kann. REST bleibt jedoch eine robuste Wahl für einfachere Anwendungen, wo weniger komplexe Datenstrukturen und striktes Caching gefordert sind. Insgesamt hängt die Wahl zwischen GraphQL und REST stark von den spezifischen Anforderungen des Projekts ab.
-%
-%Derzeit dominieren zwei Technologien die Web-API-Entwicklug: REST und GraphQL. Generell
-%sind Rest und GraphQL bei POST- und PUT-Abfragen performant ausgeglichen, jedoch bei
-%GET-Abfragen unterscheiden sie sich signifikant[4]. Diese Unterschiede lassen sich haupts¨achlich
-%darauf zur¨uckf¨uhren, dass REST-Implementierungen typischerweise mehrere festgelegte Endpunkte
-%ben¨otigen, um Daten aus verschiedenen Ressourcen abzurufen[3]. Im Gegensatz dazu
-%nutzt GraphQL einen einzigen, flexiblen Endpunkt, der komplexe Datenabfragen effizient verarbeiten
-%kann[3]. Diese Architektur erm¨oglicht es GraphQL, den Herausforderungen des Over- und
-%Underfetchings entgegenzuwirken, welche bei REST-basierten APIs h¨aufig auftreten [3]. Eine
-%Studie von Lawi et al.,[5] zeigte, dass REST bis zu 50% schneller als GraphQL antwortet und
-%37% h¨oheren Durchsatz erzielt. Allerdings GraphQL 37% weniger CPU-Rechenleistung und 39%
-%weniger Speicherbelegung beansprucht[5].
-%Eine im Zuge dieser Arbeit durchgef¨uhrten Anforderungsanalyse wird
+Im Hinblick auf die Entwicklung der geplanten Schnittstelle erweist sich der Architekturstil REST als die überlegene Wahl. 
+Dieser Ansatz ermöglicht es den Nutzern, die Schnittstelle mit weniger spezifischem Wissen über die Datenstruktur effektiv zu nutzen, was die Einarbeitungszeit erheblich reduziert. 
+Zudem erfordert das Caching keine zusätzliche Implementierung, da REST von den eingebauten HTTP-Caching-Mechanismen profitiert. 
+Auch die Wartung einer REST-Schnittstelle gestaltet sich in der Regel weniger aufwendig als die einer GraphQL-basierten API, was langfristige Vorteile in Bezug auf Betriebskosten und Ressourceneinsatz bietet.
 
-4. rest vs graphql
-\cite{Quinamera:2023:GraphMappingStudy}
-\cite{Vohra:2022:GraphVsRestImplementation}
-\cite{Lawi:2021:GraphVsRestPerformance}
 
 
 
