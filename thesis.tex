@@ -486,9 +486,45 @@ Dies unterstützt die Entwicklung und Validierung von Client-Anfragen.
 
 Im folgenden Abschnitt wird anhand eines Beispiels eine GraphQL \hyperref[alg:graphql-request]{Anfrage} und \hyperref[alg:graphql-response]{Antwort} illustriert.
 Angenommen, wir haben eine Webanwendung mit Benutzer:innen, Postings und Kommentaren, welche in verschiedenen Datenbanken gespeichert sind.
+
+\begin{lstlisting}[
+		language=GraphQL, 
+		caption={GraphQL-Schema}, 
+		label={alg:graphql-schema}
+	]
+		type User {
+			id: Int!
+			email: String
+			name: String
+			posts: [Post]
+		}
+		
+		type Post {
+			id: Int!
+			text: String
+			date: String
+			author: User
+			comments: [Comment]
+		}
+		
+		type Comment {
+			id: Int!
+			text: String
+			date: String
+			commentedPost: Post
+			author: User
+		}
+		
+		type Query {
+			user(id: Int!): User
+		}
+\end{lstlisting}
+
+
+
 Wollen wir nun für eine Person mit ID 42 alle Postings und Kommentare abrufen, genügt in GraphQL eine einzige Anfrage. \cite{Quinamera:2023:GraphMappingStudy}
 
-\renewcommand{\lstlistingname}{Query}
+%\renewcommand{\lstlistingname}{Query}
 \begin{lstlisting}[
 		language=GraphQL, 
 		caption={GraphQL-Anfrage}, 
@@ -498,8 +534,7 @@ Wollen wir nun für eine Person mit ID 42 alle Postings und Kommentare abrufen, 
 			name
 			email
 			posts {
-				title
-				date
+				text
 				comments {
 					text
 					date
@@ -521,7 +556,6 @@ Die entsprechende Server-Antwort auf die Anfrage sieht wie folgt aus:
 		"posts": [
 			{
 				"text": "Answer is...",
-				"date": "2000-01-01",
 				"comments": [
 					{
 						"text": "...42"
