@@ -525,8 +525,6 @@ Zentral für unsere Betrachtung ist eine spezifische GraphQL-Query, die als Eing
 Um in dieser GraphQL-Anwendung alle Postings und Kommentare einer Person mit der ID 42 abzurufen, kann dies effizient mit einer einzigen Anfrage erfolgen. 
 Dabei ist es lediglich notwendig, die erwarteten Schlüssel der JSON-Struktur entsprechend zu verschachteln.
 
-\newpage
-
 %\renewcommand{\lstlistingname}{Query}
 \begin{lstlisting}[
 		language=GraphQL, 
@@ -599,8 +597,10 @@ und Underfetching
 Dies führt zu einer Reduktion der Antwortgrößen um bis zu 90 \% und somit zu der oben angeführten Steigerung der Performance \cite{Brito:2019:MigratingToGraphQL}.
 
 Wird jedoch das Multiplexing-Feature von HTTP/2 angewendet, können mehrere Anfragen oder Methoden gleichzeitig an jedem Endpunkt ausgeführt werden, was wiederum zu besseren Antwortzeiten für REST führt \cite{Lawi:2021:GraphVsRestPerformance}.
-So kann REST bei Tests, die auf Geschwindigkeit und Durchsatz ausgerichtet sind und Multiplexing anwenden, mit einer bis zu 50 \% schnelleren Antwortzeit punkten \cite{Lawi:2021:GraphVsRestPerformance}.
+So kann REST bei Tests, die auf Geschwindigkeit und Durchsatz ausgerichtet sind und Multiplexing verwenden, mit einer bis zu 50 \% schnelleren Antwortzeit aufzeigen \cite{Lawi:2021:GraphVsRestPerformance}.
 
+Auch wenn die Abfragen weniger komplex sind, weist REST eine höhere Antwortzeit auf. 
+Dies betrifft abfragen, wo nur ein oder zwei Endpunkte angesteuert werden und somit der GraphQL Overhead nicht gerechtfertigt ist. \cite{Quinamera:2023:GraphMappingStudy}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % TODO die unten auskommentierten punkte einbauen.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
