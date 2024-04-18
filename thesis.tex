@@ -558,8 +558,8 @@ und Underfetching
 \footnote{
 	Underfetching: Server antwortet mit zu wenig Daten, weshalb mehrere Endpunkte angesteuert werden müssen.
 }
-, welches GraphQL effektiv addressiert, indem es dem Client erlaubt, in nur einer Query genau zu spezifizieren, welche Daten benötigt werden. 
-Dies führt zu einer signifikanten Reduktion der Antwortgrößen und somit zu den oben gelisteten Effizienzsteigerungen.
+, welches GraphQL effektiv adressiert, indem es dem Client erlaubt, in nur einer Query genau zu spezifizieren, welche Daten benötigt werden \cite{brito:2019:migratingToGraphQL}. 
+Dies führt zu einer Reduktion der Antwortgrößen um bis zu 90 \% und somit zu der oben angeführten Steigerung der Performance \cite{brito:2019:migratingToGraphQL}.
 
 Wird jedoch das Multiplexing-Feature von HTTP/2 angewendet, können mehrere Anfragen oder Methoden gleichzeitig an jedem Endpunkt ausgeführt werden, was wiederum zu besseren Antwortzeiten für REST führt \cite{Lawi:2021:GraphVsRestPerformance}.
 So kann REST bei Tests, die auf Geschwindigkeit und Durchsatz ausgerichtet sind und Multiplexing anwenden, mit einer bis zu 50 \% schnelleren Antwortzeit punkten \cite{Lawi:2021:GraphVsRestPerformance}.
