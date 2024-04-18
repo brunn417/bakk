@@ -484,8 +484,10 @@ Dies unterstützt die Entwicklung und Validierung von Client-Anfragen.
 
 \subsection{Anwendungsbeispiel}
 
-Im folgenden Abschnitt wird anhand eines Beispiels der Aufbau eines GraphQL \hyperref[alg:graphql-schema]{Schemas}, eine \hyperref[alg:graphql-request]{Anfrage} und \hyperref[alg:graphql-response]{Antwort} illustriert.
-Angenommen, wir haben eine Webanwendung mit drei Datentypen: Benutzer:innen, Postings und Kommentaren, welche in verschiedenen Datenbanken gespeichert sind und eine Query, die als Parameter eine ID nimmt und einen User retourniert.
+Im folgenden Abschnitt wird anhand eines praktischen Beispiels verdeutlicht, wie ein GraphQL  \hyperref[alg:graphql-schema]{Schema} strukturiert ist, wie eine \hyperref[alg:graphql-request]{Anfrage} formuliert wird und welche Art von \hyperref[alg:graphql-response]{Antwort} vom Server zurückgegeben wird. 
+Konkret betrachten wir eine Webanwendung, die drei verschiedene Datentypen umfasst: Benutzer:innen, Postings und Kommentare. 
+Diese Daten sind in unterschiedlichen Datenbanken gespeichert. 
+Zentral für unsere Betrachtung ist eine spezifische GraphQL-Query, die als Eingabeparameter eine ID erhält und daraufhin eine:n Benutzer:in (User) aus der Datenbank retourniert.
 
 \begin{lstlisting}[
 		language=GraphQL, 
