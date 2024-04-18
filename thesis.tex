@@ -627,9 +627,17 @@ So kann REST bei Tests, die auf Geschwindigkeit und Durchsatz ausgerichtet sind 
 Auch wenn die Abfragen weniger komplex sind, weist REST eine geringere Antwortzeit auf. 
 Dies betrifft abfragen, wo nur ein oder zwei Endpunkte angesteuert werden und somit der GraphQL Overhead nicht ausgeglichen wird. \cite{Quinamera:2023:GraphMappingStudy}
 
-Um das oben angeführte Beispiel für eine \hyperref[alg:graphql-request]{GraphQL-Anfrage} auch in REST darzustellen, bräuchte es mehrere Anfragen.
+Um das oben angeführte Beispiel für eine \hyperref[alg:graphql-request]{GraphQL-Anfrage} auch in REST darzustellen, bräuchte es mehrere Anfragen. Im ersten Schritt wird der User mit ID 42 angefragt, dann die Postings von User 42 und zuletzt die Kommentare von jedem dieser Postings.
 
-
+\begin{lstlisting}[
+	language=REST, 
+	caption={REST-Anfragen}, 
+	label={alg:rest-request}
+	]
+	GET /users/42
+	GET /users/42/posts
+	GET /posts/{post_id}/comments
+\end{lstlisting}
 
 
 \subsection{Bedienbarkeit}
