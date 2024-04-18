@@ -550,9 +550,12 @@ In diesem Abschnitt werden die zwei Technologien miteinander verglichen und erwo
 Generell sind REST und GraphQL bei POST- und PUT-Abfragen performant ausgeglichen, jedoch zeigen sich bei GET-Abfragen signifikante Unterschiede \cite{Vohra:2022:GraphVsRestImplementation}.
 Es zeigt sich, dass GraphQL eine überlegene Performance bei komplexen Abfragen aufweist.
 Bei Abfragen mit vier Endpunkten und 1000 Key-Value Paaren ist die Antwort von GraphQL bereits 16-mal schneller und bei mehr als fünf Endpunkten bis zu 180-mal schneller \cite{Quinamera:2023:GraphMappingStudy}.
-Eine Schwäche von REST ist das Over- und Underfetching
+Eine Schwäche von REST ist das Over-
 \footnote{
-	Overfetching: Server retourniert mehr Daten als Client benötigt. \\
+	Overfetching: Server retourniert mehr Daten als Client benötigt.
+}
+und Underfetching
+\footnote{
 	Underfetching: Server antwortet mit zu wenig Daten, weshalb mehrere Endpunkte angesteuert werden müssen.
 }
 , welches GraphQL effektiv addressiert, indem es dem Client erlaubt, in nur einer Query genau zu spezifizieren, welche Daten benötigt werden. 
