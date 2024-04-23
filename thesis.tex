@@ -842,6 +842,7 @@ So werden User:innen nur mit gewissen Rechten auf gewisse Endpunkte zugreifen k�
 Aus den oben beschriebenen \nameref{subsec:useCases} ergeben sich somit die funktionalen Anforderungen an die Schnittstelle:
 
 \begin{enumerate}
+	
 	\item \textbf{Benutzerdaten abrufen:}
 	
 		 Entwicklung eines Endpunkts zur Ermittlung der eindeutigen ID mittels eines case-insensitiven Substrings des Namens.
@@ -877,6 +878,24 @@ Aus den oben beschriebenen \nameref{subsec:useCases} ergeben sich somit die funk
 \section{Nicht-funktionale Anforderungen}
 
 Ausgehend von der Konferenz OOPSLA '06 --- einer renommierten Veranstaltung im Bereich der objektorientierten Programmiersysteme, Sprachen und Anwendungen --- und der Anforderungsanalyse in Zusammenarbeit mit Kolleg:innen ergeben sich folgende nicht-funktionale Anforderungen \cite{Bloch:2006:How2DesignGoodAPI}.
+
+\begin{enumerate}
+	
+	\item \textbf{Bedienbarkeit:}
+	
+	Die Schnittstelle soll intuitiv nutzbar sein, wobei die Endpunkte selbsterklärende Bezeichnungen tragen und eine klare Struktur aufweisen. 
+	Dies umfasst logisch benannte Funktionen und Pfade, die zu einer mühelosen Bedienung beitragen.
+	
+	\item \textbf{Fehlerbehandlung:}
+ 
+	Essentiell für ein gutes System ist auch eine konsistente und transparente Fehlerbehandlung, die den Anwender:innen schnelle und verständliche Rückmeldungen bietet.
+	
+	\item \textbf{Dokumentation:}
+	
+	Die Dokumentation der Schnittstelle ist gemäß dem Stil der OpenAPI-Spezifikation anzufertigen. Sie wird detaillierte Beschreibungen der Serverendpunkte, der Funktionen sowie der Datentypen enthalten. 
+	Um den Nutzer:innen eine praxisnahe Orientierung zu bieten, sollen zudem anschauliche Anwendungsbeispiele integriert werden.
+	
+\end{enumerate}
 
 
 
