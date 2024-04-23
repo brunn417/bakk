@@ -228,7 +228,7 @@ Da es in der Zukunft viele unterschiedliche Benutzergruppen dieser Schnittstelle
 Um dies zu ermöglichen, muss im Vorfeld der Implementierung eine genaue Evaluierung der verschiedenen Technologien und Ansprüche durchgeführt werden.
  
 Das Ziel dieser Arbeit ist es, den derzeitigen Stand der Technik in Bezug auf Web-Schnittstellen zu recherchieren und auf dem erlangten Wissen aufbauend eine API entwerfen.
-Diese soll nicht nur den Ansprüchen der Stakeholder gerecht werden, sondern auch technische nicht funktionalen Anforderungen sättigen.
+Diese soll nicht nur den Ansprüchen der Stakeholder gerecht werden, sondern auch technische nicht funktionale Anforderungen erfüllen.
 Dabei sind Aspekte wie Sicherheit, Antwortzeit, Benutzerfreundlichkeit und Skalierbarkeit grundlegende Kriterien, aber auch Parameter wie Over- und Underfetching
 \footnote{
 	Underfetching tritt auf, wenn eine Schnittstellenabfrage nicht alle erwünschten Daten in der Antwort enthält wohingegen beim Overfetching mehr als das Angeforderte retourniert wird.
@@ -380,7 +380,11 @@ Um sich Zugang zu diesen Systemen zu ermöglichen, ist es notwendig, sich mit di
 Jedoch wird dies durch die Vielfalt und oft inkonsistente Art der Dokumentation zusätzlich erschwert \cite{Maleshkova:2010:InvestigationWebAPIs}.
 
 Eine umfangreiche empirische Studie von S. Serbout,  F. D. Lauro und C. Pautasso, die auf der IEEE International Conference on Software Architecture Workshops 2022 vorgestellt wurde, untersucht die Größe und Struktur von Web-API-Spezifikationen, die aus Open-Source-Repositories extrahiert wurden. Diese Web-APIs umfassen neben der Dokumentation der bereitgestellten Operationen auch Schemadefinitionen für den Datenaustausch bei API-Anfragen und API-Antworten. 
-Durch die Analyse von 42.194 gültigen OAS-Spezifikationen, die zwischen 2014 und 2021 veröffentlicht wurden und von bekannten Dienstanbietern wie Google, VMware (Avi Networks), Twilio und Amazon stammen, zeigt die Studie verschiedene Metriken auf. 
+Durch die Analyse von 42.194 gültigen OpenApi Specifications (OAS)
+\footnote{
+	OAS ist ein Standard zur Beschreibung von RESTful APIs, der die Generierung von Dokumentation ermöglicht.
+}
+, die zwischen 2014 und 2021 veröffentlicht wurden und von bekannten Dienstanbietern wie Google, VMware (Avi Networks), Twilio und Amazon stammen, zeigt die Studie verschiedene Metriken auf. 
 Der Mittelwert über alle diese Schnittstellen ist 3,98 Pfade zu 5,23 Operationen. 
 Außerdem wurde eine Korrelation zwischen der Größe der API und Art des Designkonzeptes entdeckt. 
 So sind kleine Schnittstellen meißt nur Read-Only und in Remote Procedure Call (RPC) Stil implementiert. 
