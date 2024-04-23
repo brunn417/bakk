@@ -361,7 +361,8 @@ mach ich wenn die anforderungsanalyse erfolgt ist
 
 
 
-\chapter{ÄHNLICHE ARBEITEN}
+\chapter{State of the Art Analyse}
+\label{sec:stateOfTheArt}
 
 In den letzten Jahren hat der Bereich der Web-Schnittstellen, gesteuert durch die Zunahme an Webanwendungen, eine dynamische Entwicklung erfahren. Diese Entwicklung wird durch eine Vielzahl von wissenschaftlichen Arbeiten unterstrichen, die sich mit den verschiedenen Aspekten und Herausforderungen von Web-APIs auseinandersetzen. 
 Um einen fundierten Überblick über den aktuellen Wissensstand im Bereich der Web-APIs zu erhalten, ist eine Analyse bestehender Forschungsarbeiten notwendig.  
@@ -384,7 +385,7 @@ Durch die Analyse von 42.194 gültigen OpenApi Specifications (OAS)
 \footnote{
 	OAS ist ein Standard zur Beschreibung von RESTful APIs, der die Generierung von Dokumentation ermöglicht.
 }
-, die zwischen 2014 und 2021 veröffentlicht wurden und von bekannten Dienstanbietern wie Google, VMware (Avi Networks), Twilio und Amazon stammen, zeigt die Studie verschiedene Metriken auf. 
+, die zwischen 2014 und 2021 veröffentlicht wurden und von bekannten Dienstanbietern wie Google und Amazon stammen, zeigt die Studie verschiedene Metriken auf. 
 Der Mittelwert über alle diese Schnittstellen ist 3,98 Pfade zu 5,23 Operationen. 
 Außerdem wurde eine Korrelation zwischen der Größe der API und Art des Designkonzeptes entdeckt. 
 So sind kleine Schnittstellen meißt nur Read-Only und in Remote Procedure Call (RPC) Stil implementiert. 
@@ -717,8 +718,16 @@ Auch die Wartung einer REST-Schnittstelle gestaltet sich in der Regel weniger au
 
 
 \chapter{Methode}
-\todo{Enter your text here.}
 
+Die Zielsetzung dieser Arbeit ist die Technologieevaluierung des aktuellen Stand der Technik und die Implementierung einer den Anforderungen entsprechende Web-Schnittstelle.
+Um diese Aufgabenstellung dem wissenschaftlichen Standard gerecht umzusetzen, ist die angewandte Methodik dieser Arbeit eine Kombination aus theoretischen, praktischen und empirischen Analysen.
+Diese setzen sich wie folgt zusammen:
+
+Im ersten Schritt wurde in \r
+\begin{enumerate}
+	\item \textbf{Client-Server}:   \\  Strikte Trennung von Client und Server Anliegen
+	\item \textbf{Stateless}:       \\  Jede Client-Anfrage beinhaltet alle notwendigen Informationen
+	\item \textbf{Cache}:           \\  Alle Server-Antworten mit (non-)cacheable deklarieren
 
 
 \chapter{Analyse und Design}
