@@ -77,6 +77,15 @@
 	showstringspaces=false
 }
 
+\lstset{
+	language=PHP, 
+	basicstyle=\ttfamily, 
+	keywordstyle=\color{blue}\bfseries, 
+	commentstyle=\color{green}, 
+	stringstyle=\color{red}
+}
+
+
 % Define convenience functions to use the author name and the thesis title in the PDF document properties.
 \newcommand{\authorname}{Paul Brunner} % The author name without titles.
 \newcommand{\thesistitle}{} % The title of the thesis. The English version should be used, if it exists.
@@ -795,6 +804,13 @@ Jedes Projekt ist durch eine eindeutige ID gekennzeichnet, die ebenfalls genutzt
 	\textbf{Rückgabe:} UserIds, Name - IDs und Namen der Benutzer, die dem Suchkriterium entsprechen.
 \end{description}
 
+\begin{lstlisting}[
+	caption={Get Users by Name Substring}
+	]
+	function getUsersByNameSubstring($name) {
+		return array($userIds, $names);
+	}
+\end{lstlisting}
 
 
 
