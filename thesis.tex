@@ -801,7 +801,7 @@ Jedes Projekt ist durch eine eindeutige ID gekennzeichnet, die ebenfalls genutzt
 Hier werden die oben besprochenen Endpunkte noch einmal aufgelistet.
 
 \begin{lstlisting}[
-	caption={Benutzerspezifische Datenabfragen}
+		caption={Benutzerspezifische Datenabfragen}
 	]
 	function getUsersByNameSubstring($name) {
 		return array($userIds, $names);
@@ -809,6 +809,15 @@ Hier werden die oben besprochenen Endpunkte noch einmal aufgelistet.
 	
 	function getAllProjectsFromUserById($id) {
 		return array($projectName, $projectId);
+	}
+\end{lstlisting}
+
+\begin{lstlisting}[
+		caption={Gebäudespezifische Datenabfragen}
+	]
+	function getProjectById($id) {
+		# Project ist ein verschachtelter Datentyp, der wie ein JSON repräsentiert werden kann.
+		return $Project;
 	}
 \end{lstlisting}
 
