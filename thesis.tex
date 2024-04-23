@@ -761,6 +761,30 @@ Sie dienen als Grundlage, um die Interaktionen der Nutzer:innen mit der Schnitts
 Diese Szenarien sind entscheidend für die Identifizierung kritischer Funktionen und der daraus resultierenden Anforderungen an das System.
 
 
+\subsection{Benutzerdaten}
+
+Ein zentraler Endpunkt der Schnittstelle ist das Abrufen von Benutzerdaten und deren Projekte. 
+Jede:r Benutzer:in wird durch eine eindeutige ID identifiziert. 
+Um diese IDs abzurufen, soll die Schnittstelle die Möglichkeit bieten, mittels eines case-insensitiven 
+\footnote{
+	Case-insensitve ist das Ignorieren von Klein- und Großbuchstaben in Datenbankabfragen.
+}
+Substrings
+\footnote{
+	Strings ist ein Datentyp der jede Art von Zeichenreihen beschreibt. Substrings sind echte Teilmengen dieser Strings.
+}
+des Namens eine Liste aller Benutzer:innen zu generieren, die diesen Namen enthalten. Neben jedem Namen wird entsprechend die zugehörige ID angezeigt.
+
+Basierend auf der ermittelten ID soll ein weiterer Endpunkt eingerichtet werden, der alle Projekte zurückgibt, die dem:der Benutzer:in mit dieser ID zugeordnet sind.
+
+
+
+
+
+
+Es soll für interne als auch externe Personen möglich sein, anhand eines definierten Authentifizierungsprotkoll
+
+
 \section{Design \& Konzept der Web-Schnittstelle}
 
 
