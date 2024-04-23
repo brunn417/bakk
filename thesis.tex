@@ -764,6 +764,7 @@ Die nicht-funktionalen Anforderungen werden in Zusammenarbeit mit der Expertise 
 
 
 \section{Use Cases}
+\label{subsec:useCases}
 
 Die Use Cases stellen zentrale Anwendungsszenarien der zu entwickelnden Schnittstelle dar und liefern wichtige Einblicke in die praktische Nutzung des Systems. 
 Sie dienen als Grundlage, um die Interaktionen der Nutzer:innen mit der Schnittstelle zu verstehen und entsprechend zu gestalten. 
@@ -832,6 +833,48 @@ Hier findet sich eine zusammenfassende Auflistung der zuvor diskutierten Endpunk
 %	function getAllProjectsWithGivenValue($fieldName, $value) {
 %		return array(%projectId, %projectName)	
 %	}
+
+
+\section{Funktionale Anforderungen}
+
+Aus den oben beschriebenen \nameref{subsec:useCases} ergeben sich somit die funktionalen Anforderungen an die Schnittstelle.
+
+\begin{itemize}[label=\textbullet, leftmargin=*]
+	\item \textbf{Benutzerdaten abrufen:}
+	\begin{itemize}
+		\item Entwicklung eines Endpunkts zur Ermittlung der Benutzerdaten mittels eines case-insensitiven Substrings des Namens.
+		\item Rückgabe einer Liste aller Benutzer:innen, die den Suchkriterien entsprechen, inklusive ihrer eindeutigen IDs.
+	\end{itemize}
+	
+	\item \textbf{Projektdaten abrufen:}
+	\begin{itemize}
+		\item Bereitstellung eines Endpunkts, der anhand einer eindeutigen Benutzer-ID alle zugehörigen Projekte retourniert.
+	\end{itemize}
+	
+	\item \textbf{Gebäudedaten analysieren:}
+	\begin{itemize}
+		\item Implementierung spezifischer Endpunkte zur Unterstützung detaillierter Auswertungen von Gebäudedaten.
+		\item Entwicklung von Endpunkten zur Rückgabe von Informationen zu allen Kriteriensets, einschließlich Feldnamen, Feldbeschreibungen und Feldtypen.
+	\end{itemize}
+	
+	\item \textbf{Datenintegration für Dashboards:}
+	\begin{itemize}
+		\item Schaffung einer Datenbasis, die die Entwicklung von Dashboards unterstützt und detaillierte, strukturierte Auswertungen ermöglicht.
+	\end{itemize}
+	
+	\item \textbf{Feldwertabfragen über alle Projekte:}
+	\begin{itemize}
+		\item Einrichtung eines Endpunkts, der mithilfe eines eindeutigen Feldnamens als Parameter, alle Werte eines spezifischen Feldes über alle Projekte hinweg zurückgibt.
+	\end{itemize}
+	
+	\item \textbf{Einzelprojektabfragen:}
+	\begin{itemize}
+		\item Bereitstellung eines Endpunkts zur Abfrage von Projektdaten anhand einer eindeutigen Projekt-ID.
+	\end{itemize}
+\end{itemize}
+
+
+
 
 
 % authentifizerung
