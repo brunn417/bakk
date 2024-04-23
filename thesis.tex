@@ -800,6 +800,8 @@ Jedes Projekt ist durch eine eindeutige ID gekennzeichnet, die genutzt werden ka
 \subsection{Übersicht der Endpunkte}
 
 Hier findet sich eine zusammenfassende Auflistung der zuvor diskutierten Endpunkte.
+Für all diese Endpunkte gibt es eine strukturierte Authentifizerungs-Strategie. 
+So werden User:innen nur mit gewissen Rechten auf gewisse Endpunkte zugreifen können, um einen Missbrauch der Daten zu vermeiden.
 
 \begin{lstlisting}[
 		caption={Benutzerspezifische Datenabfragen}
@@ -871,9 +873,17 @@ Aus den oben beschriebenen \nameref{subsec:useCases} ergeben sich somit die funk
 		\item Bereitstellung eines Endpunkts zur Abfrage von Projektdaten anhand einer eindeutigen Projekt-ID.
 	\end{itemize}
 	
+	\item \textbf{Authentifizierung:}
+	\begin{itemize}
+		\item Ein Anmeldetool zum erstellen einen Authentifizierungstoken, der über die HTTP-Header mitgeschickt wird.
+	\end{itemize}
+	
 \end{enumerate}
 
 
+\section{Nicht-funktionale Anforderungen}
+
+Aus angesehenen
 
 
 
