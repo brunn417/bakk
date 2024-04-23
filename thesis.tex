@@ -764,23 +764,48 @@ Diese Szenarien sind entscheidend für die Identifizierung kritischer Funktionen
 \subsection{Benutzerdaten}
 
 Ein zentraler Endpunkt der Schnittstelle ist das Abrufen von Benutzerdaten und deren Projekte. 
-Jede:r Benutzer:in wird durch eine eindeutige ID identifiziert. 
+Jede:r Benutzer:in einer Gebäudedeklarations-Plattform wird durch eine eindeutige ID identifiziert. 
 Um diese IDs abzurufen, soll die Schnittstelle die Möglichkeit bieten, mittels eines case-insensitiven 
 \footnote{
 	Case-insensitve ist das Ignorieren von Klein- und Großbuchstaben in Datenbankabfragen.
 }
 Substrings
 \footnote{
-	Strings ist ein Datentyp der jede Art von Zeichenreihen beschreibt. Substrings sind echte Teilmengen dieser Strings.
+	Strings ist ein Datentyp der jede Art von Zeichenreihen beschreibt und Substrings sind echte Teilmengen dieser Strings.
 }
 des Namens eine Liste aller Benutzer:innen zu generieren, die diesen Namen enthalten. Neben jedem Namen wird entsprechend die zugehörige ID angezeigt.
-
-Basierend auf der ermittelten ID soll ein weiterer Endpunkt eingerichtet werden, der alle Projekte zurückgibt, die dem:der Benutzer:in mit dieser ID zugeordnet sind.
-
+Basierend auf der ermittelten ID soll ein weiterer Endpunkt eingerichtet werden, der alle Projekte retourniert, die dem:der Benutzer:in mit dieser ID zugeordnet sind.
 
 
+\subsection{Gebäudedaten}
+
+Der Fokus dieser Arbeit liegt auf der Analyse von Gebäudedaten, wofür eine Vielzahl spezifischer Endpunkte erforderlich ist. 
+Diese dienen dazu, detaillierte und gut strukturierte Auswertungen zu ermöglichen und eine solide Basis für die Entwicklung zukünftiger Dashboards zu bieten. 
+Ein wesentliches Problem besteht darin, dass auf verschiedenen Plattformen in allen Kriteriensets die Felder durch nicht-selbstbeschreibende Identifikatoren gekennzeichnet sind. 
+Um einen umfassenden Überblick über diese Felder zu gewinnen, ist ein spezieller Endpunkt notwendig, der für jedes Kriterienset die Feldnamen, deren Beschreibungen sowie den Feldtyp zurückliefert. 
+Zusätzlich ermöglicht ein weiterer Endpunkt, basierend auf eindeutigen Feldnamen, das Abrufen aller Projekte, die in einem spezifischen Feld einen bestimmten Wert aufweisen. 
+Jedes Projekt ist durch eine eindeutige ID gekennzeichnet, die ebenfalls genutzt werden kann, um alle Projektdaten abzurufen.
 
 
+\subsection{Übersicht der Endpunkte}
+
+
+
+
+
+% authentifizerung
+
+% docs
+
+% nicht funktionale
+
+% projekt mit bestimmten status auch als endpunkt
+
+
+
+
+
+\newpage
 
 Es soll für interne als auch externe Personen möglich sein, anhand eines definierten Authentifizierungsprotkoll
 
