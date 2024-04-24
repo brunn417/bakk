@@ -1016,13 +1016,22 @@ Nachdem der Server die REST-Anfragen erhält, werden die abgearbeitet und folgli
 Damit auch die Antworten für User:innen nachvollziehbar und weitestgehend selbsterklärend sind, orientiert sich die Implementierung an den Best Practices.
 
 Das bevorzugte Antwortformat ist JavaScript Object Notation (JSON), das sich durch eine übersichtliche Key-Value-Datenstruktur auszeichnet. 
-Im Falle fehlgeschlagener Anfragen enthält die Antwort eine detaillierte Fehlermeldung, die in drei wesentliche Segmente gegliedert ist: den Fehlertyp, wie zum Beispiel Validation Error, eine  Fehlerbeschreibung in Textform, sowie einen spezifischen Fehlercode. 
+Im Falle fehlgeschlagener Anfragen enthält die Antwort eine detaillierte Fehlermeldung, die in drei wesentliche Segmente gegliedert ist: 
+den Fehlertyp, wie zum Beispiel Validation Error, eine  Fehlerbeschreibung in Textform, sowie einen spezifischen Fehlercode. 
 Diese Codes finden auch bei erfolgreichen Anfragen Verwendung und orientieren sich an den HTTP-Statuscodes, die mit insgesamt 35 definierten Codes (2xx für Erfolgsmeldungen, 3xx für Umleitungen, 4xx für Clientfehler und 5xx für Serverfehler) die Art des Feedbacks kategorisieren. Innerhalb dieser Kategorien wird der 'xx'-Platzhalter durch genaue Zahlen ersetzt, um eine spezifische Fehlerursache zu beschreiben. \cite{Murphy:2017:RestStyleGuide}
 
 \todo{vlt noch caching}
 
 
 \subsection{Dokumentation}
+
+Obwohl die Schnittstelle mit dem Ziel der intuitiven Benutzbarkeit entwickelt wird, entsteht parallel eine umfassende Dokumentation, die alle Endpunkte, Methoden sowie zusätzliche Anwendungsbeispiele zur Veranschaulichung beinhaltet. 
+Für die detaillierte Dokumentation der Endpunkte wird das Tool Swagger
+\footnote{
+	\url{https://swagger.io/} (letzter Zugriff am 24.04.2024)
+} 
+eingesetzt, das eine automatisierte Dokumentationserstellung ermöglicht, vorausgesetzt, die OpenAPI-Spezifikation wird dabei eingehalten. 
+Zusätzliche, einfach gehaltene Anwendungsbeispiele geben den Nutzer:innen eine klare Übersicht und erleichtern den Einstieg in die Benutzung der API.
 
 
 \section{Repräsentationen / Entitäten}
