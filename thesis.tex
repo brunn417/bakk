@@ -1012,7 +1012,12 @@ Hier ist ein Beispiel für eine vollständige REST GET-Anfrage:
 
 \subsection{Server Antworten}
 
-Die Ser
+Nachdem der Server die REST-Anfragen erhält, werden die abgearbeitet und folglich die angefragten Daten oder eine aussagekräftige Fehlermeldung retourniert.
+Damit auch die Antworten für User:innen nachvollziehbar und weitestgehend selbsterklärend sind, orientiert sich die Implementierung an den Best Practices.
+
+Das bevorzugte Antwortformat ist JavaScript Object Notation (JSON), das sich durch eine übersichtliche Key-Value-Datenstruktur auszeichnet. 
+Im Falle fehlgeschlagener Anfragen enthält die Antwort eine detaillierte Fehlermeldung, die in drei wesentliche Segmente gegliedert ist: den Fehlertyp, wie zum Beispiel 'Validation Error', eine  Fehlerbeschreibung in Textform, sowie einen spezifischen Fehlercode. 
+Diese Codes finden auch bei erfolgreichen Anfragen Verwendung und orientieren sich an den HTTP-Statuscodes, die mit insgesamt 35 definierten Codes (2xx für Erfolgsmeldungen, 3xx für Umleitungen, 4xx für Clientfehler und 5xx für Serverfehler) die Art des Feedbacks kategorisieren. Innerhalb dieser Kategorien wird der 'xx'-Platzhalter durch genaue Zahlen ersetzt, um eine spezifische Fehlerursache zu beschreiben.
 
 
 
