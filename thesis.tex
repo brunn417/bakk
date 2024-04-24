@@ -869,7 +869,7 @@ Dieser Ansatz ermöglicht es den Nutzern, die Schnittstelle mit weniger spezifis
 Zudem erfordert das Caching keine zusätzliche Implementierung, da REST von den eingebauten HTTP-Caching-Mechanismen profitiert. 
 Auch die Wartung einer REST-Schnittstelle gestaltet sich in der Regel weniger aufwendig als die einer GraphQL-basierten API, was langfristige Vorteile in Bezug auf Betriebskosten und Ressourceneinsatz bietet.
 
-
+\todo{vlt noch laravel beschreiben}
 
 
 
@@ -930,6 +930,16 @@ Wie bereits in Kapitel \ref{chap:rest} erläutert, müssen fünf zentrale REST-C
 Erstens ist eine deutliche Trennung zwischen Client- und Serverlogik erforderlich, wobei alle Interaktionen zustandslos sein müssen, das heißt, jede Client-Anfrage und jede Server-Antwort sollte unabhängig voneinander sein. Zweitens muss die Schnittstelle Cache-fähig sein, um effiziente Datenabrufe zu ermöglichen. 
 Weiterhin müssen alle Anfragen und Fehlermeldungen den standardisierten Methoden wie PUT, GET, POST etc. folgen und einheitliche Fehlercodes wie 2xx, 3xx etc. verwenden. 
 Abschließend muss die Schnittstelle den Anforderungen an ein Uniform Interface genügen, das die eindeutige Nutzung von URIs zur Identifikation und Repräsentation der Daten festlegt.
+
+
+\subsection{Authentifizierung}
+
+Der Authentifizierungsprozess der Schnittstelle wird mit dem Paket Sanctum
+\footnote{
+	https://laravel.com/docs/11.x/sanctum (besucht am 24.04.2024)
+}
+von Laravel abgehallten.
+
 
 
 
