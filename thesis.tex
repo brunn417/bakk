@@ -995,11 +995,11 @@ Dies trägt zur Reduktion der Komplexität des Systems bei und verhindert die En
 
 \subsection{HTTP}
 
-Weiters leitet sich aus der REST-Einschränkung Uniform Interface ab, dass die Daten mittels den URIs nur wie der Name schon sagt, identifiziert werden sollen.
-Deshalb werden Methoden benötigt, um mit den Daten nach belieben interagieren zu können.
-Ein üblicher Ansatz ist das Verwenden der weit verbreiteten Hyper Text Transfer Protocol (HTTP) Methoden, welche auch für die Umsetzung dieser Schnittstelle in Kraft treten.
-Da im ersten Prototyp der API nur Lese Operationen benötigt werden, wird die Implementierung mit der Methode \grqq GET \grqq auskommen.
-In der folgenden Liste ist nur eine komplette REST GET Anfrage:
+Aus der REST-Einschränkung Uniform Interface ergibt sich, dass die Daten mittels URIs lediglich identifiziert, nicht jedoch manipuliert werden sollen. 
+Um mit den Daten interagieren zu können, sind spezifische Methoden erforderlich. 
+Ein gängiger Ansatz ist die Nutzung der weit verbreiteten Methoden des Hyper Text Transfer Protocols (HTTP), die auch für die Implementierung dieser Schnittstelle zum Einsatz kommen. 
+Da im ersten Prototyp der API nur Leseoperationen benötigt werden, wird die Implementierung ausschließlich die Methode \grqq GET\grqq verwenden. 
+Hier ist ein Beispiel für eine vollständige REST GET-Anfrage:
 
 \begin{lstlisting}[
 	language=REST, 
