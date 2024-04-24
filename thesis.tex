@@ -979,6 +979,16 @@ Dies trägt nicht nur zur Klarheit bei, indem es sicherstellt, dass ausschließl
 Am Beginn des Pfades muss zusätzlich noch die Version der Schnittstelle, also zum Beispiel \grqq v1/\grqq , definiert sein. 
 Die genannten Vorschriften ergeben Beispielsweise folgenden Pfad:
 
+\begin{lstlisting}[
+	language=REST, 
+	caption={REST-Pfad}, 
+	label={alg:rest-path}
+	]
+	host/v1/resourceName/{id}/subResourceName/{subresourceId}/...
+	GET /users/42/posts
+	GET /posts/{post_id}/comments
+\end{lstlisting}
+
 host/v1/resourceName/{id}/subResourceName/{subresourceId}/...
 
 Ein weiteres wichtiges Gestaltungsprinzip ist die Vermeidung von Pfadüberschneidungen. 
