@@ -367,365 +367,6 @@ mach ich wenn die anforderungsanalyse erfolgt ist
 
 
 
-
-
-
-\chapter{State of the Art Analyse}
-\label{sec:stateOfTheArt}
-
-In den letzten Jahren hat der Bereich der Web-Schnittstellen, gesteuert durch die Zunahme an Webanwendungen, eine dynamische Entwicklung erfahren. Diese Entwicklung wird durch eine Vielzahl von wissenschaftlichen Arbeiten unterstrichen, die sich mit den verschiedenen Aspekten und Herausforderungen von Web-APIs auseinandersetzen. 
-Um einen fundierten Überblick über den aktuellen Wissensstand im Bereich der Web-APIs zu erhalten, ist eine Analyse bestehender Forschungsarbeiten notwendig.  
-Im weiteren Verlauf dieser Arbeit liegt der Fokus auf der Untersuchung spezifischerer Themengebiete, um eine Technologieevaluierung durchführen zu können. 
-Dabei werden insbesondere die Vor- und Nachteile verschiedener Technologien im Kontext der Entwicklung und Implementierung von Web-Schnittstellen beleuchtet.
-
-
-\section{Web-APIs}
-
-Die Nutzung von Web-Schnittstellen birgt Herausforderungen, insbesondere aufgrund des Fehlens einheitlicher Standards \cite{Alrashed:2021:StandardizingAPIs}. 
-Obwohl viele Webseiten Dritten den Zugang zu ihren Daten über Web-APIs gewähren, stellt die manuelle Erstellung von URLs -- einschließlich der Festlegung von Endpunkten, Parametern, Authentifizierungsprozessen und der Handhabung von Seitenumbrüchen -- eine erhebliche Hürde dar 
-\cite{Alrashed:2021:StandardizingAPIs, Maleshkova:2010:InvestigationWebAPIs}. 
-Diese Prozesse erfordern ein tiefgehendes Verständnis und sind mit einem beträchtlichen Zeitaufwand verbunden \cite{Alrashed:2021:StandardizingAPIs}. 
-Zudem verfügt eine große Anzahl dieser Web-APIs über individuelle Datenmodelle, die, obwohl sie häufig ähnliche Arten von Informationen verwalten, unterschiedliche Methoden und Eigenschaften auf ihre eigene Weise bereitstellen \cite{Alrashed:2021:StandardizingAPIs}.
-Um sich Zugang zu diesen Systemen zu ermöglichen, ist es notwendig, sich mit diesen im Voraus vertraut zu machen. 
-Jedoch wird dies durch die Vielfalt und oft inkonsistente Art der Dokumentation zusätzlich erschwert \cite{Maleshkova:2010:InvestigationWebAPIs}.
-
-Eine umfangreiche empirische Studie von S. Serbout,  F. D. Lauro und C. Pautasso, die auf der IEEE International Conference on Software Architecture Workshops 2022 vorgestellt wurde, untersucht die Größe und Struktur von Web-API-Spezifikationen, die aus Open-Source-Repositories extrahiert wurden. Diese Web-APIs umfassen neben der Dokumentation der bereitgestellten Operationen auch Schemadefinitionen für den Datenaustausch bei API-Anfragen und API-Antworten. 
-Durch die Analyse von 42.194 gültigen OpenApi Specifications (OAS)
-\footnote{
-	OAS ist ein Standard zur Beschreibung von RESTful APIs, der die Generierung von Dokumentation ermöglicht.
-}
-, die zwischen 2014 und 2021 veröffentlicht wurden und von bekannten Dienstanbietern wie Google und Amazon stammen, zeigt die Studie verschiedene Metriken auf. 
-Der Mittelwert über alle diese Schnittstellen ist 3,98 Pfade zu 5,23 Operationen. 
-Außerdem wurde eine Korrelation zwischen der Größe der API und Art des Designkonzeptes entdeckt. 
-So sind kleine Schnittstellen meißt nur Read-Only und in Remote Procedure Call (RPC) Stil implementiert. 
-Wohingegen Schnittstellen mit drei oder mehr Pfade in Richtung Create, Read, Update and Delete (CRUD) oder Representational State Transfer (REST) tendieren. \cite{Serbout:2022:WebApiStructures}
-
-
-\section{REST}
-
-%vlt kurz rest allgemein beschreiben wie unten graphql + person id beispiel
-
-Obwohl viele Web-Schnittstellen als REST-APIs bezeichnet werden, erfüllen sie selten vollständig die in Roy Fieldings Dissertation definierten REST-Prinzipien \cite{Neumann:2021:AnalysisOfRest}. 
-In Wahrheit implementieren die meisten dieser Schnittstellen nur einige Aspekte von REST, ohne jedoch den vollständigen Architekturstil
-\footnote{
-	Eine Softwarearchitektur umfasst die strukturierten Komponenten eines Softwaresystems, die in Abhängigkeit zueinander stehen und miteinander kommunizieren müssen, um eine funktionierende Anwendung zu ermöglichen \cite{Fielding:2000:REST}. 
-	Der Architekturstil legt fest, welche architektonischen Voraussetzungen erfüllt sein müssen, damit ein System diesem Stil zugeordnet werden kann.
-}
-zu erreichen, den Fielding beschrieben hat \cite{Neumann:2021:AnalysisOfRest}.
-
-Das REST-Paradigma definiert sechs spezifische Einschränkungen, wovon fünf eingehalten werden müssen, um als RESTful zu gelten. 
-Diese Prinzipien sind entscheidend, um die Vorteile von REST, wie Skalierbarkeit, Zustandslosigkeit und die Fähigkeit, unabhängige Dienste zu nutzen, vollständig auszuschöpfen. 
-Leider zeigt die Praxis, dass viele als REST deklarierte Schnittstellen diesen Anforderungen nicht gerecht werden, was oft zu Missverständnissen und ineffizienter Implementierung führt \cite{Neumann:2021:AnalysisOfRest}.
-
-\subsection{Client-Server}
-
-Die Client-Server-Abstraktion ist eine essenzielle Einschränkung im REST-Architekturstil, die die Benutzerschnittstelle (Client) von der Datenspeicherung und Geschäftslogik (Server) separiert. 
-Diese Trennung fördert die Möglichkeit, dass Benutzer über verschiedene Plattformen auf Anwendungen zugreifen können, während Serverfunktionen wie Datenmanagement und Verarbeitungslogik unabhängig weiterentwickelt und skaliert werden. 
-Dadurch wird nicht nur die Wartbarkeit und Anpassungsfähigkeit der Systeme erhöht, sondern auch eine Plattformunabhängigkeit gewährleistet, die eine breite Nutzerbasis anspricht. 
-Diese modulare Struktur unterstützt die Skalierbarkeit, indem sie die Verteilung von Lasten und die effiziente Ressourcennutzung ohne direkte Abhängigkeiten zwischen Client und Server ermöglicht, wie Fielding in seiner Arbeit „Architectural Styles and the Design of Network-based Software Architectures“ hervorhebt. \cite{Fielding:2000:REST}.
-
-
-\subsection{Zustandslos}
-
-Diese Einschränkung bezieht sich auf die Interaktion zwischen Client und Server und ist ein fundamentales Prinzip, das vorschreibt, dass jede Anfrage des Clients an den Server alle notwendigen Informationen beinhalten muss, um diese unabhängig von vorherigen Interaktionen zu verarbeiten. 
-Dieses Prinzip stellt sicher, dass der Server keine Zustandsinformationen speichern muss, wodurch die Abhängigkeit von einer Anfrage zur nächsten eliminiert wird.
-Aus architektonischer Sicht bietet die Zustandslosigkeit signifikante Vorteile bezüglich Visibilität, Zuverlässigkeit und Skalierbarkeit.
-Doch die Performanz kann darunter leider, da es zu mehrfachen Senden gleicher Informationen kommen kann. \cite{Fielding:2000:REST}
-
-
-\subsection{Cache}
-
-Der Cache-Constraint gibt vor, dass Antworten des Servers als cacheable oder non-cacheable gekennzeichnet werden. 
-Dies ermöglicht es dem Client, Antworten für zukünftige Anfragen wiederzuverwenden, was potenziell zu erheblichen Leistungssteigerungen führen kann. Allerdings kann dies die Zuverlässigkeit beeinträchtigen, da die im Cache gespeicherten Daten möglicherweise nicht mehr mit den aktuellen Daten auf dem Server übereinstimmen. \cite{Fielding:2000:REST}
-
-
-\subsection{Uniform Interface}
-
-Die Haupteigenschaft vom REST-Architekturstil ist das Uniform Interface und wird durch vier untergeordnete Einschränkungen definiert, die gemeinsam das Konzept von Ressourcen und deren Repräsentationen prägen.
-
-\textbf{{ Ressourcen und Repräsentationen}} 
-
-Roy Fielding definiert eine Ressource als eine benennbare Information, die über eine zeitlich variable Funktion identifiziert wird. 
-Repräsentationen beschreibt Fielding als eine Byte-Sequenz, ergänzt durch Metadaten, die diese Bytes beschreiben. Die Repräsentation ist das, was als Antwort auf eine Ressourcenanforderung übermittelt wird.
-Diese entscheidende Trennung von Ressource und Repräsentation erleichtert die Verwaltung von Ressourcen, indem sie es ermöglicht, dass diese unabhängig von ihren spezifischen Repräsentationen identifiziert und manipuliert werden können \cite{Fielding:2000:REST}.
-
-
-\textbf{{ Identifikation und Manipulation von Ressourcen}} 
-
-Die REST-Architektur nutzt Uniform Resource Identifiers (URIs), um Ressourcen zu identifizieren. URIs vereinen die Funktionen von URLs (zur Lokalisierung) und URNs (zur Benennung), wodurch die Flexibilität im Umgang mit Ressourcen erhöht wird, da sie eine klare und eindeutige Identifikation ermöglichen. 
-Die Identifikation durch URIs sollte sich nie auf spezifische Repräsentationen beziehen, sondern auf die konzeptuelle Einordnung der Ressource.
-Also eine URI soll keine Dateiendung wie \grqq path/file.json\grqq{} enthalten, um flexibel zu bleiben.
-Die Manipulation von Ressourcen erfolgt über ihre Repräsentationen, wobei die Ressource selbst unverändert bleibt. 
-Dies unterstützt die Skalierbarkeit und Wartung von Webanwendungen, indem es Änderungen erleichtert, ohne dass bestehende Verweise angepasst werden müssen. \cite{Fielding:2000:REST}
-
-
-\textbf{{ Selbstbeschreibende Nachrichten und HATEOAS}}
-
-Selbstbeschreibende Nachrichten gewährleisten, dass jede Anfrage oder Antwort so wenig Kontext wie möglich benötigt. 
-Durch die Verwendung standardisierter Methoden und explizite Angaben zur Cacheability in den Antworten fördert dies die Zustandslosigkeit von REST-Services.
-
-Die Einschränkung Hypermedia as the Engine of Application State (HATEOAS) zielt darauf ab, eine maximale Entkopplung zwischen Client und Server zu gewährleisten. 
-Sie erfordert, dass der Client keine Kenntnisse über die interne Struktur des Services benötigt, da alle Zustandsübergänge auf dem Server durch die Auswahl von durch den Server bereitgestellten Hyperlinks gesteuert werden. 
-Dies ermöglicht eine dynamische Navigation und Interaktion mit dem Service, was die Flexibilität und Erweiterbarkeit des Webservices erhöht. \cite{Fielding:2000:REST}
-
-
-\subsection{Layered System}
-
-Das Konzept des geschichteten Systems (Layered System)ermöglicht eine hierarchische Schichtenarchitektur. 
-Jede Komponente der REST Architektur interagiert nur mit der direkt angrenzenden Schicht, was die Komplexität des Systems reduziert und die Unabhängigkeit von der zugrunde liegenden Plattform erhöht. 
-Geschichtete Systeme können auch zur Kapselung alter Dienste und zum Schutz neuer Dienste vor veralteten Clients genutzt werden und unterstützen die Skalierbarkeit durch Lastverteilung über mehrere Netzwerke.
-
-Durch den zusätzlich entstehenden Overhead
-\footnote{
-	Als Overhead bezeichnet man jene Daten, die neben den eigentlichen Nutzdaten zusätzlich übertragen oder gespeichert werden, um die Kommunikation und Datenverarbeitung zu unterstützen.
-}
-und die dadurch verursachte Latenz, kann die Leistung beeinträchtigt werden.
-Insgesamt fördert die Kombination aus geschichtetem System und uniformen Schnittstellen die Modularität und Wartbarkeit der Architektur, indem sie ein flexibles und effizientes Management von Diensten ermöglicht. \cite{Fielding:2000:REST}
-
-
-\subsection{Code-On-Demand}
-
-Code-On-Demand ist eine optionale Einschränkung innerhalb des REST Architekturstils. 
-Dieses Prinzip erweitert die Flexibilität einer Client-Server-Interaktion, indem es Servern ermöglicht, ausführbaren Code an Clients zu senden, die diesen Code dann ausführen können. 
-Somit könne Server nicht nur reine Daten, sondern auch Funktionalität in Form von ausführbaren Code, an den Client zurück senden. \cite{Fielding:2000:REST}
-
-
-\subsection{Zusammenfassung der REST-Constraints}
-
-Nur wenn all diese Constraints, abgesehen von Code-On-Demand, eingehalten werden, kann ein System als RESTful deklariert werden. 
-In der folgenden Auflistung werden die einzelnen Einschränkungen noch einmal zur Übersicht aufgelistet und kurz beschrieben.
-
-\begin{enumerate}
-	\item \textbf{Client-Server}:   \\  Strikte Trennung von Client und Server Anliegen
-	\item \textbf{Stateless}:       \\  Jede Client-Anfrage beinhaltet alle notwendigen Informationen
-	\item \textbf{Cache}:           \\  Alle Server-Antworten mit (non-)cacheable deklarieren
-	
-	\item \textbf{Uniform Interface} 
-	\begin{enumerate}[label*=\arabic*.]
-		\item \textbf{Identification of Resources}: 					  \\ Jede Ressource hat einen eindeutigen Identifikator (URI)
-		\item \textbf{Manipulation of Resources through Representations}: \\ Veränderungen ausschließlich über Repräsentationen
-		\item \textbf{Self-descriptive Messages}: 						  \\ Jede Nachricht kann für sich selbst stehen
-		\item \textbf{HATEOAS}: 										  \\ Dynamische Client-Interaktionen durch Hyperlinks in Serverantworten
-	\end{enumerate}
-		
-	\item \textbf{Layered System}:  \\ Geschichtete und voneinander isolierte Architektur
-	\item \textbf{Code-On-Demand}:  \\ Server können ausführbaren Code an Client senden
-\end{enumerate}
-
-
-\section{GraphQL}
-
-Graph Query Language (GraphQL) ist eine Datenabfrage- und Datenmanipulation-Sprache für Application Programming Interfaces. 
-Kern von GraphQL ist das Typensystem, das es ermöglicht, präzise die Struktur und die benötigten Daten zu definieren. Dies ermöglicht es mit einzelnen Abfragen Operationen in sehr verschachtelten Daten durchzuführen.
-Eine weiteres Merkmal von GraphQL ist die Introspektionsfähigkeit, welche eine Selbstbeschreibung des Schemas ermöglicht.
-Dies unterstützt die Entwicklung und Validierung von Client-Anfragen.
-
-
-\subsection{Anwendungsbeispiel}
-
-Im folgenden Abschnitt wird anhand eines praktischen Beispiels verdeutlicht, wie ein GraphQL  \hyperref[alg:graphql-schema]{Schema} strukturiert ist, wie eine \hyperref[alg:graphql-request]{Anfrage} formuliert wird und welche Art von \hyperref[alg:graphql-response]{Antwort} vom Server zurückgegeben wird. 
-Konkret betrachten wir eine Webanwendung, die drei verschiedene Datentypen umfasst: Benutzer:innen, Postings und Kommentare. 
-Diese Daten sind in unterschiedlichen Datenbanken gespeichert. 
-Zentral für unsere Betrachtung ist eine spezifische GraphQL-Query, die als Eingabeparameter eine ID erhält und daraufhin eine:n Benutzer:in (User) aus der Datenbank retourniert.
-
-\begin{lstlisting}[
-		language=GraphQL, 
-		caption={GraphQL-Schema}, 
-		label={alg:graphql-schema}
-	]
-		type User {
-			id: Int!
-			email: String
-			name: String
-			posts: [Post]
-		}
-		
-		type Post {
-			id: Int!
-			text: String
-			date: String
-			author: User
-			comments: [Comment]
-		}
-		
-		type Comment {
-			id: Int!
-			text: String
-			date: String
-			commentedPost: Post
-			author: User
-		}
-		
-		type Query {
-			user(id: Int!): User
-		}
-\end{lstlisting}
-
-Um in dieser GraphQL-Anwendung alle Postings und Kommentare einer Person mit der ID 42 abzurufen, kann dies effizient mit einer einzigen Anfrage erfolgen. 
-Dabei ist es lediglich notwendig, die erwarteten Schlüssel der JSON-Struktur entsprechend zu verschachteln.
-
-\newpage
-%\renewcommand{\lstlistingname}{Query}
-\begin{lstlisting}[
-		language=GraphQL, 
-		caption={GraphQL-Anfrage}, 
-		label={alg:graphql-request}
-	]
-		user(id: 42) {
-			name
-			email
-			posts {
-				text
-				comments {
-					text
-					date
-				}
-			}
-		}
-\end{lstlisting}
-
-Die entsprechende Server-Antwort auf die Anfrage sieht wie folgt aus:
-
-\begin{lstlisting}[
-	language=GraphQL, 
-	caption={GraphQL-Antwort}, 
-	label={alg:graphql-response}
-	]
-	"user" {
-		"name": "Zaphod",
-		"email": "zaphod@mail.univer.se",
-		"posts": [
-			{
-				"text": "Answer is...",
-				"comments": [
-					{
-						"text": "...42"
-						"date": "2000-01-02"
-					}
-				]
-			}
-		]
-	}
-\end{lstlisting}
-
-Betrachtet man die JSON-Antwort als Key-Value Paare, kann man erkennen, dass die Anfragen den Antworten entsprechen, nur ohne dem Value Part.
-
-
-\section{Vergleich zwischen GraphQL und REST}
-
-Der Großteil aller Web-Schnittstellen verwendet den REST-Architekturstil, auch wie bereits oben erläutert, nur ein geringer Anteil tatsächlich alle REST-Einschränkungen umsetzt.
-Der zweite große und immer mehr Anteil gewinnende Player ist GraphQL.
-Im Vergleich zwischen GraphQL und REST ergeben sich mehrere signifikante Unterschiede, die insbesondere in den Bereichen Performance, Flexibilität der Abfragen, Benutzerfreundlichkeit und Wartbarkeit deutlich werden. 
-Diese Differenzen machen sich vor allem bei komplexen Datenanforderungen bemerkbar.
-In diesem Abschnitt werden die zwei Technologien miteinander verglichen und erwogen, welche der beiden die bessere Lösung für die benötigte Schnittstelle ist.
-
-
-\subsection{Effizienz}
-
-Generell sind REST und GraphQL bei POST- und PUT-Abfragen performant ausgeglichen, jedoch zeigen sich bei GET-Abfragen signifikante Unterschiede \cite{Vohra:2022:GraphVsRestImplementation}.
-Es zeigt sich, dass GraphQL eine überlegene Performance bei komplexen Abfragen aufweist.
-Bei Abfragen mit vier Endpunkten und 1000 Key-Value Paaren ist die Antwort von GraphQL bereits 16-mal schneller und bei mehr als fünf Endpunkten bis zu 180-mal schneller \cite{Quinamera:2023:GraphMappingStudy}.
-Eine Schwäche von REST ist das Over-
-\footnote{
-	Overfetching: Server retourniert mehr Daten als Client benötigt.
-}
-und Underfetching
-\footnote{
-	Underfetching: Server antwortet mit zu wenig Daten, weshalb mehrere Endpunkte angesteuert werden müssen.
-}
-, welches GraphQL effektiv adressiert, indem es dem Client erlaubt, in nur einer Query genau zu spezifizieren, welche Daten benötigt werden \cite{Brito:2019:MigratingToGraphQL}. 
-Dies führt zu einer Reduktion der Antwortgrößen um bis zu 90 \% und somit zu der oben angeführten Steigerung der Performance \cite{Brito:2019:MigratingToGraphQL}.
-
-Wird jedoch das Multiplexing-Feature von HTTP/2 angewendet, können mehrere Anfragen oder Methoden gleichzeitig an jedem Endpunkt ausgeführt werden, was wiederum zu besseren Antwortzeiten für REST führt.
-So kann REST bei Tests, die auf Geschwindigkeit und Durchsatz ausgerichtet sind und Multiplexing verwenden, mit einer bis zu 50 \% schnelleren Antwortzeit aufzeigen. \cite{Lawi:2021:GraphVsRestPerformance}
-
-Auch wenn die Abfragen weniger komplex sind, weist REST eine geringere Antwortzeit auf. 
-Dies betrifft abfragen, wo nur ein oder zwei Endpunkte angesteuert werden und somit der GraphQL Overhead nicht ausgeglichen wird. \cite{Quinamera:2023:GraphMappingStudy}
-
-Um das oben angeführte Beispiel für eine \hyperref[alg:graphql-request]{GraphQL-Anfrage} auch in REST darzustellen, bräuchte es mehrere Anfragen. Im ersten Schritt wird der User mit ID 42 angefragt, dann die Postings von User 42 und zuletzt die Kommentare von jedem dieser Postings.
-
-\begin{lstlisting}[
-	language=REST, 
-	caption={REST-Anfragen}, 
-	label={alg:rest-request}
-	]
-	GET /users/42
-	GET /users/42/posts
-	GET /posts/{post_id}/comments
-\end{lstlisting}
-
-
-\subsection{Bedienbarkeit}
-
-GraphQL bietet aufgrund seiner strengen Typisierung signifikante Vorteile, da bereits vor der Ausführung einer Abfrage genaue Typüberprüfungen stattfinden, die zur Reduzierung von Laufzeitfehlern beitragen \cite{Brito:2019:MigratingToGraphQL}. 
-Auf der anderen Seite erhöht jedoch die Komplexität der Anfragen die Anforderungen an das Verständnis der Datenstruktur durch die Benutzenden. 
-Obwohl GraphQL es ermöglicht, komplexe Datenabfragen in einzelnen Queries durchzuführen, setzt dies voraus, dass die Nutzenden die Datenstruktur vollständig verstehen. 
-Daher kann die Einarbeitungszeit für neue User höher sein und die Fehleranfälligkeit zunehmen, im Vergleich zu einer gut strukturierten und übersichtlichen REST-Schnittstelle. \cite{Quinamera:2023:GraphMappingStudy}
-
-
-\subsection{Cache}
-
-Caching-Strategien spielen eine entscheidende Rolle bei der Leistungsfähigkeit von Webanwendungen. 
-REST und GraphQL verfolgen jedoch unterschiedliche Herangehensweisen. 
-REST nutzt bereits vorhandene HTTP-Caching-Mechanismen, da es auf einheitlichen HTTP-Methoden aufgebaut ist. 
-Auf diese Weise lassen sich Antworten auf GET-Anfragen problemlos in Standard-HTTP-Caches speichern \cite{Li:2016:RestCache}. 
-Dies führt zu einer Verringerung der Serverlast und einer Verbesserung der Antwortzeiten durch die Zwischenspeicherung und Wiederverwendung von oft angeforderten Daten. 
-GraphQL hingegen ist nicht standardmäßig mit HTTP-Caching ausgestattet.
-Aufgrund der enormen Anpassungsfähigkeit jeder GraphQL-Anfrage sind die Anforderungen häufig individuell und entsprechen somit keiner effizienten herkömmlichen Caching-Strategie \cite{Brito:2019:MigratingToGraphQL}.
-Die Implementierung spezieller Caching-Strategien für GraphQL kann es schwierig machen, die API zu entwickeln und zu warten \cite{Ala:2022:GraphVsRestCaching}.
-
-
-\subsection{Zusammenfassung}
-
-REST und GraphQL zeigen im direkten Vergleich, dass beide Technologien ihre spezifischen Stärken und Schwächen in Bezug auf Effizienz, Flexibilität, Benutzerfreundlichkeit und Caching haben. 
-In Bereich der Performance hat GraphQL bei komplexeren Abfragen in den oben referenzierten Studien besser abgeschlossen, dafür kann es sich als sehr kompliziert erweisen, eine sinnvolle Caching-Strategie für GraphQL zu implementieren, was hingegen bei REST mittels HTTP-Caching ersichtlich simpler funktioniert. 
-Die strenge Typisierung bei GraphQL verspricht zwar eine Reduzierung von Laufzeitfehler, doch setzt es auch ein tieferes Verständnis für die Datenstruktur voraus.
-
-Im Hinblick auf die Entwicklung der geplanten Schnittstelle erweist sich der Architekturstil REST als die überlegene Wahl. 
-Dieser Ansatz ermöglicht es den Nutzern, die Schnittstelle mit weniger spezifischem Wissen über die Datenstruktur effektiv zu nutzen, was die Einarbeitungszeit erheblich reduziert. 
-Zudem erfordert das Caching keine zusätzliche Implementierung, da REST von den eingebauten HTTP-Caching-Mechanismen profitiert. 
-Auch die Wartung einer REST-Schnittstelle gestaltet sich in der Regel weniger aufwendig als die einer GraphQL-basierten API, was langfristige Vorteile in Bezug auf Betriebskosten und Ressourceneinsatz bietet.
-
-
-
-
-
-
-%\begin{table}[h]
-%	\centering
-%	
-%	\begin{tabular}{ll|l}
-%		
-%		1   & Client-Server       & Strikte Trennung von Client und Server Anliegen \\
-%		\hline
-%		2   & Zustandslos         & Jede Client-Anfrage beinhaltet alle notwendigen Informationen \\
-%		\hline 
-%		3   & Cache      		  & Alle Server-Antworten mit (non-)cacheable deklarieren \\
-%		\hline
-%		4   & Uniform Interface \\
-%		4.1 & Ressources          & some text \\
-%		4.2 & Representations     & some text \\
-%		4.3 & Selbstbeschreibend  & some text \\
-%		4.4 & HATEOAS             & some text \\
-%		\hline
-%		5   & Layered System      & some text \\
-%		\hline
-%		6   & Code-On-Demand      & some text \\
-%		
-%	\end{tabular}
-%	
-%	\caption{REST-Constraints}
-%	\label{tab:REST-Constraints}
-%\end{table}
-
-
-
-
-
-
-
-
-
 \chapter{Methode}
 
 Die primäre Zielsetzung dieser Arbeit besteht darin, den aktuellen Stand der Technik zu evaluieren und eine den spezifischen Anforderungen gerecht werdende Web-Schnittstelle zu implementieren. 
@@ -756,7 +397,7 @@ Die Ergebnisse dieser Evaluierung fließen direkt in die abschließende Überarb
 
 
 
-\chapter{Anforderungsanalyse und Design}
+\chapter{Anforderungsanalyse}
 
 In diesem Kapitel erfolgt zunächst eine eingehende Anforderungsanalyse, um eine solide Basis für das Design der Web-Schnittstelle zu schaffen. 
 Mithilfe von Use Cases werden die funktionalen Anforderungen präzise definiert und erläutert. 
@@ -906,6 +547,369 @@ Ausgehend von der Konferenz OOPSLA '06 --- einer renommierten Veranstaltung im B
 	Die Endpunkte sollen daher kontinuierlich in einem CI/CD-Prozess getestet werden, um Stabilität und Zuverlässigkeit sicherzustellen und eine durchgehende Funktionalität zu garantieren.
 	
 \end{enumerate}
+
+
+
+
+
+
+
+
+
+\chapter{State of the Art Analyse}
+\label{sec:stateOfTheArt}
+
+In den letzten Jahren hat der Bereich der Web-Schnittstellen, gesteuert durch die Zunahme an Webanwendungen, eine dynamische Entwicklung erfahren. Diese Entwicklung wird durch eine Vielzahl von wissenschaftlichen Arbeiten unterstrichen, die sich mit den verschiedenen Aspekten und Herausforderungen von Web-APIs auseinandersetzen. 
+Um einen fundierten Überblick über den aktuellen Wissensstand im Bereich der Web-APIs zu erhalten, ist eine Analyse bestehender Forschungsarbeiten notwendig.  
+Im weiteren Verlauf dieser Arbeit liegt der Fokus auf der Untersuchung spezifischerer Themengebiete, um eine Technologieevaluierung durchführen zu können. 
+Dabei werden insbesondere die Vor- und Nachteile verschiedener Technologien im Kontext der Entwicklung und Implementierung von Web-Schnittstellen beleuchtet.
+
+
+\section{Web-APIs}
+
+Die Nutzung von Web-Schnittstellen birgt Herausforderungen, insbesondere aufgrund des Fehlens einheitlicher Standards \cite{Alrashed:2021:StandardizingAPIs}. 
+Obwohl viele Webseiten Dritten den Zugang zu ihren Daten über Web-APIs gewähren, stellt die manuelle Erstellung von URLs -- einschließlich der Festlegung von Endpunkten, Parametern, Authentifizierungsprozessen und der Handhabung von Seitenumbrüchen -- eine erhebliche Hürde dar 
+\cite{Alrashed:2021:StandardizingAPIs, Maleshkova:2010:InvestigationWebAPIs}. 
+Diese Prozesse erfordern ein tiefgehendes Verständnis und sind mit einem beträchtlichen Zeitaufwand verbunden \cite{Alrashed:2021:StandardizingAPIs}. 
+Zudem verfügt eine große Anzahl dieser Web-APIs über individuelle Datenmodelle, die, obwohl sie häufig ähnliche Arten von Informationen verwalten, unterschiedliche Methoden und Eigenschaften auf ihre eigene Weise bereitstellen \cite{Alrashed:2021:StandardizingAPIs}.
+Um sich Zugang zu diesen Systemen zu ermöglichen, ist es notwendig, sich mit diesen im Voraus vertraut zu machen. 
+Jedoch wird dies durch die Vielfalt und oft inkonsistente Art der Dokumentation zusätzlich erschwert \cite{Maleshkova:2010:InvestigationWebAPIs}.
+
+Eine umfangreiche empirische Studie von S. Serbout,  F. D. Lauro und C. Pautasso, die auf der IEEE International Conference on Software Architecture Workshops 2022 vorgestellt wurde, untersucht die Größe und Struktur von Web-API-Spezifikationen, die aus Open-Source-Repositories extrahiert wurden. Diese Web-APIs umfassen neben der Dokumentation der bereitgestellten Operationen auch Schemadefinitionen für den Datenaustausch bei API-Anfragen und API-Antworten. 
+Durch die Analyse von 42.194 gültigen OpenApi Specifications (OAS)
+\footnote{
+	OAS ist ein Standard zur Beschreibung von RESTful APIs, der die Generierung von Dokumentation ermöglicht.
+}
+, die zwischen 2014 und 2021 veröffentlicht wurden und von bekannten Dienstanbietern wie Google und Amazon stammen, zeigt die Studie verschiedene Metriken auf. 
+Der Mittelwert über alle diese Schnittstellen ist 3,98 Pfade zu 5,23 Operationen. 
+Außerdem wurde eine Korrelation zwischen der Größe der API und Art des Designkonzeptes entdeckt. 
+So sind kleine Schnittstellen meißt nur Read-Only und in Remote Procedure Call (RPC) Stil implementiert. 
+Wohingegen Schnittstellen mit drei oder mehr Pfade in Richtung Create, Read, Update and Delete (CRUD) oder Representational State Transfer (REST) tendieren. \cite{Serbout:2022:WebApiStructures}
+
+
+\section{REST}
+
+%vlt kurz rest allgemein beschreiben wie unten graphql + person id beispiel
+
+Obwohl viele Web-Schnittstellen als REST-APIs bezeichnet werden, erfüllen sie selten vollständig die in Roy Fieldings Dissertation definierten REST-Prinzipien \cite{Neumann:2021:AnalysisOfRest}. 
+In Wahrheit implementieren die meisten dieser Schnittstellen nur einige Aspekte von REST, ohne jedoch den vollständigen Architekturstil
+\footnote{
+	Eine Softwarearchitektur umfasst die strukturierten Komponenten eines Softwaresystems, die in Abhängigkeit zueinander stehen und miteinander kommunizieren müssen, um eine funktionierende Anwendung zu ermöglichen \cite{Fielding:2000:REST}. 
+	Der Architekturstil legt fest, welche architektonischen Voraussetzungen erfüllt sein müssen, damit ein System diesem Stil zugeordnet werden kann.
+}
+zu erreichen, den Fielding beschrieben hat \cite{Neumann:2021:AnalysisOfRest}.
+
+Das REST-Paradigma definiert sechs spezifische Einschränkungen, wovon fünf eingehalten werden müssen, um als RESTful zu gelten. 
+Diese Prinzipien sind entscheidend, um die Vorteile von REST, wie Skalierbarkeit, Zustandslosigkeit und die Fähigkeit, unabhängige Dienste zu nutzen, vollständig auszuschöpfen. 
+Leider zeigt die Praxis, dass viele als REST deklarierte Schnittstellen diesen Anforderungen nicht gerecht werden, was oft zu Missverständnissen und ineffizienter Implementierung führt \cite{Neumann:2021:AnalysisOfRest}.
+
+\subsection{Client-Server}
+
+Die Client-Server-Abstraktion ist eine essenzielle Einschränkung im REST-Architekturstil, die die Benutzerschnittstelle (Client) von der Datenspeicherung und Geschäftslogik (Server) separiert. 
+Diese Trennung fördert die Möglichkeit, dass Benutzer über verschiedene Plattformen auf Anwendungen zugreifen können, während Serverfunktionen wie Datenmanagement und Verarbeitungslogik unabhängig weiterentwickelt und skaliert werden. 
+Dadurch wird nicht nur die Wartbarkeit und Anpassungsfähigkeit der Systeme erhöht, sondern auch eine Plattformunabhängigkeit gewährleistet, die eine breite Nutzerbasis anspricht. 
+Diese modulare Struktur unterstützt die Skalierbarkeit, indem sie die Verteilung von Lasten und die effiziente Ressourcennutzung ohne direkte Abhängigkeiten zwischen Client und Server ermöglicht, wie Fielding in seiner Arbeit „Architectural Styles and the Design of Network-based Software Architectures“ hervorhebt. \cite{Fielding:2000:REST}.
+
+
+\subsection{Zustandslos}
+
+Diese Einschränkung bezieht sich auf die Interaktion zwischen Client und Server und ist ein fundamentales Prinzip, das vorschreibt, dass jede Anfrage des Clients an den Server alle notwendigen Informationen beinhalten muss, um diese unabhängig von vorherigen Interaktionen zu verarbeiten. 
+Dieses Prinzip stellt sicher, dass der Server keine Zustandsinformationen speichern muss, wodurch die Abhängigkeit von einer Anfrage zur nächsten eliminiert wird.
+Aus architektonischer Sicht bietet die Zustandslosigkeit signifikante Vorteile bezüglich Visibilität, Zuverlässigkeit und Skalierbarkeit.
+Doch die Performanz kann darunter leider, da es zu mehrfachen Senden gleicher Informationen kommen kann. \cite{Fielding:2000:REST}
+
+
+\subsection{Cache}
+
+Der Cache-Constraint gibt vor, dass Antworten des Servers als cacheable oder non-cacheable gekennzeichnet werden. 
+Dies ermöglicht es dem Client, Antworten für zukünftige Anfragen wiederzuverwenden, was potenziell zu erheblichen Leistungssteigerungen führen kann. Allerdings kann dies die Zuverlässigkeit beeinträchtigen, da die im Cache gespeicherten Daten möglicherweise nicht mehr mit den aktuellen Daten auf dem Server übereinstimmen. \cite{Fielding:2000:REST}
+
+
+\subsection{Uniform Interface}
+
+Die Haupteigenschaft vom REST-Architekturstil ist das Uniform Interface und wird durch vier untergeordnete Einschränkungen definiert, die gemeinsam das Konzept von Ressourcen und deren Repräsentationen prägen.
+
+\textbf{{ Ressourcen und Repräsentationen}} 
+
+Roy Fielding definiert eine Ressource als eine benennbare Information, die über eine zeitlich variable Funktion identifiziert wird. 
+Repräsentationen beschreibt Fielding als eine Byte-Sequenz, ergänzt durch Metadaten, die diese Bytes beschreiben. Die Repräsentation ist das, was als Antwort auf eine Ressourcenanforderung übermittelt wird.
+Diese entscheidende Trennung von Ressource und Repräsentation erleichtert die Verwaltung von Ressourcen, indem sie es ermöglicht, dass diese unabhängig von ihren spezifischen Repräsentationen identifiziert und manipuliert werden können \cite{Fielding:2000:REST}.
+
+
+\textbf{{ Identifikation und Manipulation von Ressourcen}} 
+
+Die REST-Architektur nutzt Uniform Resource Identifiers (URIs), um Ressourcen zu identifizieren. URIs vereinen die Funktionen von URLs (zur Lokalisierung) und URNs (zur Benennung), wodurch die Flexibilität im Umgang mit Ressourcen erhöht wird, da sie eine klare und eindeutige Identifikation ermöglichen. 
+Die Identifikation durch URIs sollte sich nie auf spezifische Repräsentationen beziehen, sondern auf die konzeptuelle Einordnung der Ressource.
+Also eine URI soll keine Dateiendung wie \grqq path/file.json\grqq{} enthalten, um flexibel zu bleiben.
+Die Manipulation von Ressourcen erfolgt über ihre Repräsentationen, wobei die Ressource selbst unverändert bleibt. 
+Dies unterstützt die Skalierbarkeit und Wartung von Webanwendungen, indem es Änderungen erleichtert, ohne dass bestehende Verweise angepasst werden müssen. \cite{Fielding:2000:REST}
+
+
+\textbf{{ Selbstbeschreibende Nachrichten und HATEOAS}}
+
+Selbstbeschreibende Nachrichten gewährleisten, dass jede Anfrage oder Antwort so wenig Kontext wie möglich benötigt. 
+Durch die Verwendung standardisierter Methoden und explizite Angaben zur Cacheability in den Antworten fördert dies die Zustandslosigkeit von REST-Services.
+
+Die Einschränkung Hypermedia as the Engine of Application State (HATEOAS) zielt darauf ab, eine maximale Entkopplung zwischen Client und Server zu gewährleisten. 
+Sie erfordert, dass der Client keine Kenntnisse über die interne Struktur des Services benötigt, da alle Zustandsübergänge auf dem Server durch die Auswahl von durch den Server bereitgestellten Hyperlinks gesteuert werden. 
+Dies ermöglicht eine dynamische Navigation und Interaktion mit dem Service, was die Flexibilität und Erweiterbarkeit des Webservices erhöht. \cite{Fielding:2000:REST}
+
+
+\subsection{Layered System}
+
+Das Konzept des geschichteten Systems (Layered System)ermöglicht eine hierarchische Schichtenarchitektur. 
+Jede Komponente der REST Architektur interagiert nur mit der direkt angrenzenden Schicht, was die Komplexität des Systems reduziert und die Unabhängigkeit von der zugrunde liegenden Plattform erhöht. 
+Geschichtete Systeme können auch zur Kapselung alter Dienste und zum Schutz neuer Dienste vor veralteten Clients genutzt werden und unterstützen die Skalierbarkeit durch Lastverteilung über mehrere Netzwerke.
+
+Durch den zusätzlich entstehenden Overhead
+\footnote{
+	Als Overhead bezeichnet man jene Daten, die neben den eigentlichen Nutzdaten zusätzlich übertragen oder gespeichert werden, um die Kommunikation und Datenverarbeitung zu unterstützen.
+}
+und die dadurch verursachte Latenz, kann die Leistung beeinträchtigt werden.
+Insgesamt fördert die Kombination aus geschichtetem System und uniformen Schnittstellen die Modularität und Wartbarkeit der Architektur, indem sie ein flexibles und effizientes Management von Diensten ermöglicht. \cite{Fielding:2000:REST}
+
+
+\subsection{Code-On-Demand}
+
+Code-On-Demand ist eine optionale Einschränkung innerhalb des REST Architekturstils. 
+Dieses Prinzip erweitert die Flexibilität einer Client-Server-Interaktion, indem es Servern ermöglicht, ausführbaren Code an Clients zu senden, die diesen Code dann ausführen können. 
+Somit könne Server nicht nur reine Daten, sondern auch Funktionalität in Form von ausführbaren Code, an den Client zurück senden. \cite{Fielding:2000:REST}
+
+
+\subsection{Zusammenfassung der REST-Constraints}
+
+Nur wenn all diese Constraints, abgesehen von Code-On-Demand, eingehalten werden, kann ein System als RESTful deklariert werden. 
+In der folgenden Auflistung werden die einzelnen Einschränkungen noch einmal zur Übersicht aufgelistet und kurz beschrieben.
+
+\begin{enumerate}
+	\item \textbf{Client-Server}:   \\  Strikte Trennung von Client und Server Anliegen
+	\item \textbf{Stateless}:       \\  Jede Client-Anfrage beinhaltet alle notwendigen Informationen
+	\item \textbf{Cache}:           \\  Alle Server-Antworten mit (non-)cacheable deklarieren
+	
+	\item \textbf{Uniform Interface} 
+	\begin{enumerate}[label*=\arabic*.]
+		\item \textbf{Identification of Resources}: 					  \\ Jede Ressource hat einen eindeutigen Identifikator (URI)
+		\item \textbf{Manipulation of Resources through Representations}: \\ Veränderungen ausschließlich über Repräsentationen
+		\item \textbf{Self-descriptive Messages}: 						  \\ Jede Nachricht kann für sich selbst stehen
+		\item \textbf{HATEOAS}: 										  \\ Dynamische Client-Interaktionen durch Hyperlinks in Serverantworten
+	\end{enumerate}
+	
+	\item \textbf{Layered System}:  \\ Geschichtete und voneinander isolierte Architektur
+	\item \textbf{Code-On-Demand}:  \\ Server können ausführbaren Code an Client senden
+\end{enumerate}
+
+
+\section{GraphQL}
+
+Graph Query Language (GraphQL) ist eine Datenabfrage- und Datenmanipulation-Sprache für Application Programming Interfaces. 
+Kern von GraphQL ist das Typensystem, das es ermöglicht, präzise die Struktur und die benötigten Daten zu definieren. Dies ermöglicht es mit einzelnen Abfragen Operationen in sehr verschachtelten Daten durchzuführen.
+Eine weiteres Merkmal von GraphQL ist die Introspektionsfähigkeit, welche eine Selbstbeschreibung des Schemas ermöglicht.
+Dies unterstützt die Entwicklung und Validierung von Client-Anfragen.
+
+
+\subsection{Anwendungsbeispiel}
+
+Im folgenden Abschnitt wird anhand eines praktischen Beispiels verdeutlicht, wie ein GraphQL  \hyperref[alg:graphql-schema]{Schema} strukturiert ist, wie eine \hyperref[alg:graphql-request]{Anfrage} formuliert wird und welche Art von \hyperref[alg:graphql-response]{Antwort} vom Server zurückgegeben wird. 
+Konkret betrachten wir eine Webanwendung, die drei verschiedene Datentypen umfasst: Benutzer:innen, Postings und Kommentare. 
+Diese Daten sind in unterschiedlichen Datenbanken gespeichert. 
+Zentral für unsere Betrachtung ist eine spezifische GraphQL-Query, die als Eingabeparameter eine ID erhält und daraufhin eine:n Benutzer:in (User) aus der Datenbank retourniert.
+
+\begin{lstlisting}[
+	language=GraphQL, 
+	caption={GraphQL-Schema}, 
+	label={alg:graphql-schema}
+	]
+	type User {
+		id: Int!
+		email: String
+		name: String
+		posts: [Post]
+	}
+	
+	type Post {
+		id: Int!
+		text: String
+		date: String
+		author: User
+		comments: [Comment]
+	}
+	
+	type Comment {
+		id: Int!
+		text: String
+		date: String
+		commentedPost: Post
+		author: User
+	}
+	
+	type Query {
+		user(id: Int!): User
+	}
+\end{lstlisting}
+
+Um in dieser GraphQL-Anwendung alle Postings und Kommentare einer Person mit der ID 42 abzurufen, kann dies effizient mit einer einzigen Anfrage erfolgen. 
+Dabei ist es lediglich notwendig, die erwarteten Schlüssel der JSON-Struktur entsprechend zu verschachteln.
+
+\newpage
+%\renewcommand{\lstlistingname}{Query}
+\begin{lstlisting}[
+	language=GraphQL, 
+	caption={GraphQL-Anfrage}, 
+	label={alg:graphql-request}
+	]
+	user(id: 42) {
+		name
+		email
+		posts {
+			text
+			comments {
+				text
+				date
+			}
+		}
+	}
+\end{lstlisting}
+
+Die entsprechende Server-Antwort auf die Anfrage sieht wie folgt aus:
+
+\begin{lstlisting}[
+	language=GraphQL, 
+	caption={GraphQL-Antwort}, 
+	label={alg:graphql-response}
+	]
+	"user" {
+		"name": "Zaphod",
+		"email": "zaphod@mail.univer.se",
+		"posts": [
+		{
+			"text": "Answer is...",
+			"comments": [
+			{
+				"text": "...42"
+				"date": "2000-01-02"
+			}
+			]
+		}
+		]
+	}
+\end{lstlisting}
+
+Betrachtet man die JSON-Antwort als Key-Value Paare, kann man erkennen, dass die Anfragen den Antworten entsprechen, nur ohne dem Value Part.
+
+
+\section{Vergleich zwischen GraphQL und REST}
+
+Der Großteil aller Web-Schnittstellen verwendet den REST-Architekturstil, auch wie bereits oben erläutert, nur ein geringer Anteil tatsächlich alle REST-Einschränkungen umsetzt.
+Der zweite große und immer mehr Anteil gewinnende Player ist GraphQL.
+Im Vergleich zwischen GraphQL und REST ergeben sich mehrere signifikante Unterschiede, die insbesondere in den Bereichen Performance, Flexibilität der Abfragen, Benutzerfreundlichkeit und Wartbarkeit deutlich werden. 
+Diese Differenzen machen sich vor allem bei komplexen Datenanforderungen bemerkbar.
+In diesem Abschnitt werden die zwei Technologien miteinander verglichen und erwogen, welche der beiden die bessere Lösung für die benötigte Schnittstelle ist.
+
+
+\subsection{Effizienz}
+
+Generell sind REST und GraphQL bei POST- und PUT-Abfragen performant ausgeglichen, jedoch zeigen sich bei GET-Abfragen signifikante Unterschiede \cite{Vohra:2022:GraphVsRestImplementation}.
+Es zeigt sich, dass GraphQL eine überlegene Performance bei komplexen Abfragen aufweist.
+Bei Abfragen mit vier Endpunkten und 1000 Key-Value Paaren ist die Antwort von GraphQL bereits 16-mal schneller und bei mehr als fünf Endpunkten bis zu 180-mal schneller \cite{Quinamera:2023:GraphMappingStudy}.
+Eine Schwäche von REST ist das Over-
+\footnote{
+	Overfetching: Server retourniert mehr Daten als Client benötigt.
+}
+und Underfetching
+\footnote{
+	Underfetching: Server antwortet mit zu wenig Daten, weshalb mehrere Endpunkte angesteuert werden müssen.
+}
+, welches GraphQL effektiv adressiert, indem es dem Client erlaubt, in nur einer Query genau zu spezifizieren, welche Daten benötigt werden \cite{Brito:2019:MigratingToGraphQL}. 
+Dies führt zu einer Reduktion der Antwortgrößen um bis zu 90 \% und somit zu der oben angeführten Steigerung der Performance \cite{Brito:2019:MigratingToGraphQL}.
+
+Wird jedoch das Multiplexing-Feature von HTTP/2 angewendet, können mehrere Anfragen oder Methoden gleichzeitig an jedem Endpunkt ausgeführt werden, was wiederum zu besseren Antwortzeiten für REST führt.
+So kann REST bei Tests, die auf Geschwindigkeit und Durchsatz ausgerichtet sind und Multiplexing verwenden, mit einer bis zu 50 \% schnelleren Antwortzeit aufzeigen. \cite{Lawi:2021:GraphVsRestPerformance}
+
+Auch wenn die Abfragen weniger komplex sind, weist REST eine geringere Antwortzeit auf. 
+Dies betrifft abfragen, wo nur ein oder zwei Endpunkte angesteuert werden und somit der GraphQL Overhead nicht ausgeglichen wird. \cite{Quinamera:2023:GraphMappingStudy}
+
+Um das oben angeführte Beispiel für eine \hyperref[alg:graphql-request]{GraphQL-Anfrage} auch in REST darzustellen, bräuchte es mehrere Anfragen. Im ersten Schritt wird der User mit ID 42 angefragt, dann die Postings von User 42 und zuletzt die Kommentare von jedem dieser Postings.
+
+\begin{lstlisting}[
+	language=REST, 
+	caption={REST-Anfragen}, 
+	label={alg:rest-request}
+	]
+	GET /users/42
+	GET /users/42/posts
+	GET /posts/{post_id}/comments
+\end{lstlisting}
+
+
+\subsection{Bedienbarkeit}
+
+GraphQL bietet aufgrund seiner strengen Typisierung signifikante Vorteile, da bereits vor der Ausführung einer Abfrage genaue Typüberprüfungen stattfinden, die zur Reduzierung von Laufzeitfehlern beitragen \cite{Brito:2019:MigratingToGraphQL}. 
+Auf der anderen Seite erhöht jedoch die Komplexität der Anfragen die Anforderungen an das Verständnis der Datenstruktur durch die Benutzenden. 
+Obwohl GraphQL es ermöglicht, komplexe Datenabfragen in einzelnen Queries durchzuführen, setzt dies voraus, dass die Nutzenden die Datenstruktur vollständig verstehen. 
+Daher kann die Einarbeitungszeit für neue User höher sein und die Fehleranfälligkeit zunehmen, im Vergleich zu einer gut strukturierten und übersichtlichen REST-Schnittstelle. \cite{Quinamera:2023:GraphMappingStudy}
+
+
+\subsection{Cache}
+
+Caching-Strategien spielen eine entscheidende Rolle bei der Leistungsfähigkeit von Webanwendungen. 
+REST und GraphQL verfolgen jedoch unterschiedliche Herangehensweisen. 
+REST nutzt bereits vorhandene HTTP-Caching-Mechanismen, da es auf einheitlichen HTTP-Methoden aufgebaut ist. 
+Auf diese Weise lassen sich Antworten auf GET-Anfragen problemlos in Standard-HTTP-Caches speichern \cite{Li:2016:RestCache}. 
+Dies führt zu einer Verringerung der Serverlast und einer Verbesserung der Antwortzeiten durch die Zwischenspeicherung und Wiederverwendung von oft angeforderten Daten. 
+GraphQL hingegen ist nicht standardmäßig mit HTTP-Caching ausgestattet.
+Aufgrund der enormen Anpassungsfähigkeit jeder GraphQL-Anfrage sind die Anforderungen häufig individuell und entsprechen somit keiner effizienten herkömmlichen Caching-Strategie \cite{Brito:2019:MigratingToGraphQL}.
+Die Implementierung spezieller Caching-Strategien für GraphQL kann es schwierig machen, die API zu entwickeln und zu warten \cite{Ala:2022:GraphVsRestCaching}.
+
+
+\subsection{Zusammenfassung}
+
+REST und GraphQL zeigen im direkten Vergleich, dass beide Technologien ihre spezifischen Stärken und Schwächen in Bezug auf Effizienz, Flexibilität, Benutzerfreundlichkeit und Caching haben. 
+In Bereich der Performance hat GraphQL bei komplexeren Abfragen in den oben referenzierten Studien besser abgeschlossen, dafür kann es sich als sehr kompliziert erweisen, eine sinnvolle Caching-Strategie für GraphQL zu implementieren, was hingegen bei REST mittels HTTP-Caching ersichtlich simpler funktioniert. 
+Die strenge Typisierung bei GraphQL verspricht zwar eine Reduzierung von Laufzeitfehler, doch setzt es auch ein tieferes Verständnis für die Datenstruktur voraus.
+
+Im Hinblick auf die Entwicklung der geplanten Schnittstelle erweist sich der Architekturstil REST als die überlegene Wahl. 
+Dieser Ansatz ermöglicht es den Nutzern, die Schnittstelle mit weniger spezifischem Wissen über die Datenstruktur effektiv zu nutzen, was die Einarbeitungszeit erheblich reduziert. 
+Zudem erfordert das Caching keine zusätzliche Implementierung, da REST von den eingebauten HTTP-Caching-Mechanismen profitiert. 
+Auch die Wartung einer REST-Schnittstelle gestaltet sich in der Regel weniger aufwendig als die einer GraphQL-basierten API, was langfristige Vorteile in Bezug auf Betriebskosten und Ressourceneinsatz bietet.
+
+
+
+
+
+
+%\begin{table}[h]
+%	\centering
+%	
+%	\begin{tabular}{ll|l}
+	%		
+	%		1   & Client-Server       & Strikte Trennung von Client und Server Anliegen \\
+	%		\hline
+	%		2   & Zustandslos         & Jede Client-Anfrage beinhaltet alle notwendigen Informationen \\
+	%		\hline 
+	%		3   & Cache      		  & Alle Server-Antworten mit (non-)cacheable deklarieren \\
+	%		\hline
+	%		4   & Uniform Interface \\
+	%		4.1 & Ressources          & some text \\
+	%		4.2 & Representations     & some text \\
+	%		4.3 & Selbstbeschreibend  & some text \\
+	%		4.4 & HATEOAS             & some text \\
+	%		\hline
+	%		5   & Layered System      & some text \\
+	%		\hline
+	%		6   & Code-On-Demand      & some text \\
+	%		
+	%	\end{tabular}
+%	
+%	\caption{REST-Constraints}
+%	\label{tab:REST-Constraints}
+%\end{table}
+
+
+
+
+
+
+
 
 
 \chapter{Entwurf der Schnittstelle}
