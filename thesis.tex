@@ -945,8 +945,8 @@ Zusätzlich erfolgt eine gezielte Auswahl aus verschiedenen bewährten Methoden,
 \subsection{RESTful}
 
 Wie bereits in Kapitel \ref{chap:rest} erläutert, müssen fünf zentrale REST-Constraints erfüllt sein, um den von Roy Fielding definierten Anforderungen gerecht zu werden. 
-Erstens ist eine deutliche Trennung zwischen Client- und Serverlogik erforderlich, wobei alle Interaktionen zustandslos sein müssen, das heißt, jede Client-Anfrage und jede Server-Antwort sollte unabhängig voneinander sein. Zweitens muss die Schnittstelle Cache-fähig sein, um effiziente Datenabrufe zu ermöglichen. 
-Weiterhin müssen alle Anfragen und Fehlermeldungen den standardisierten Methoden wie PUT, GET, POST etc. folgen und einheitliche Fehlercodes wie 2xx, 3xx etc. verwenden. 
+Erstens ist eine deutliche Trennung zwischen Client- und Serverlogik erforderlich, wobei alle Interaktionen zustandslos sein müssen, das heißt, jede Client-Anfrage und jede Server-Antwort sollte unabhängig voneinander sein. Drittens muss die Schnittstelle Cache-fähig sein, um effiziente Datenabrufe zu ermöglichen.
+Das gesamte System muss außerdem eine streng isolierte Schichtenarchitektur aufweisen.
 Abschließend muss die Schnittstelle den Anforderungen an ein Uniform Interface genügen, das die eindeutige Nutzung von URIs zur Identifikation und Repräsentation der Daten festlegt.
 
 
@@ -995,7 +995,9 @@ Dies trägt zur Reduktion der Komplexität des Systems bei und verhindert die En
 
 \subsection{HTTP}
 
-
+Weiters leitet sich aus der REST-Einschränkung Uniform Interface ab, dass die Daten mittels den URIs nur wie der Name schon sagt, identifiziert werden sollen.
+Deshalb werden Methoden benötigt, um mit den Daten nach belieben interagieren zu können.
+Ein üblicher Ansatz ist das Verwenden der weit verbreiteten Hyper Text Transfer Protocol (HTTP) Methoden, was auch für die Umsetzung der Schnittstelle verwendet werden wird.
 
 
 
