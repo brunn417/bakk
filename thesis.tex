@@ -977,6 +977,11 @@ Die Pfade in einer URI sind typischerweise hierarchisch mit Subpfaden strukturie
 Des Weiteren ist es essentiell, dass in den Pfaden ausschließlich Nomen, bzw. in Fall von Unique Identifiers (UID) ganze Zahlen, verwendet werden. 
 Dies trägt nicht nur zur Klarheit bei, indem es sicherstellt, dass ausschließlich eindeutige und kontextspezifische Identifikatoren verwendet werden, sondern verhindert auch Missverständnisse, die durch den Einsatz von Verben oder adjektivischen Phrasen entstehen könnte. \cite{Archip:2018:RestStandards}
 
+Am Beginn des Pfades muss zusätzlich noch die Version der Schnittstelle, also zum Beispiel \grqq v1/\grqq , definiert sein. 
+Die genannten Vorschriften ergeben Beispielsweise folgenden Pfad:
+
+host/v1/resourceName/{id}/subResourceName/{subresourceId}/...
+
 Ein weiteres wichtiges Gestaltungsprinzip ist die Vermeidung von Pfadüberschneidungen. 
 Kreuzen sich die Pfade verschiedener Endpunkte, kann dies zu einer unübersichtlichen und schwer wartbaren Struktur führen \cite{Archip:2018:RestStandards}. 
 Es ist daher anzustreben, dass jede Ressource eine eindeutige, nicht überlappende URI erhält. 
@@ -984,6 +989,8 @@ Dies trägt zur Reduktion der Komplexität des Systems bei und verhindert die En
 
 
 \subsection{HTTP}
+
+
 
 
 
