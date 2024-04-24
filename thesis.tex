@@ -965,6 +965,25 @@ Es ermöglicht eine nahtlose Authentifizierung mittels API-Token und unterstütz
 Das Tool stellt sicher, dass die Authentifizierung von Nutzern sicher und ohne unnötige Komplexität erfolgt, was es zu einem idealen Werkzeug für moderne Web-Anwendungen macht. \cite{Steven:2023:Sanctum}
 
 
+\subsection{URI}
+
+Um eine effiziente und klare Strukturierung von Webdiensten zu gewährleisten, sollen alle Ressourcen durch sorgfältig strukturierte Unique Resource Identifiers (URI) erreichbar sein.
+Dieser Zugang wird durch den REST-Constraint des Uniform Interfaces vorgegeben, welches spezifische Anforderungen an die Struktur und Namensgebung der Pfade stellt, um eine konsistente und intuitive Interaktion mit der API zu ermöglichen.
+
+Innerhalb dieser Strukturierung sollen die Pfade der URIs mit selbstbeschreibenden Wörtern gestaltet werden. 
+Diese Wörter sollen präzise den Inhalt oder die Funktion der jeweiligen Ressource widerspiegeln, damit auch ohne tiefergehende Dokumentation ersichtlich ist, was der Zweck der jeweiligen Ressource ist. 
+Dies erhöht die Benutzerfreundlichkeit und Selbsterklärungsfähigkeit der API.
+Die Pfade in einer URI sind typischerweise hierarchisch mit Subpfaden strukturiert, die durch Schrägstriche ("/") getrennt werden.
+Des Weiteren ist es essentiell, dass in den Pfaden ausschließlich Nomen verwendet werden. 
+Dies trägt nicht nur zur Klarheit bei, indem es sicherstellt, dass ausschließlich eindeutige und kontextspezifische Identifikatoren verwendet werden, sondern verhindert auch Missverständnisse, die durch den Einsatz von Verben oder adjektivischen Phrasen entstehen könnte.
+
+Ein weiteres wichtiges Gestaltungsprinzip ist die Vermeidung von Pfadüberschneidungen. 
+Kreuzen sich die Pfade verschiedener Endpunkte, kann dies zu einer unübersichtlichen und schwer wartbaren Struktur führen. 
+Es ist daher anzustreben, dass jede Ressource eine eindeutige, nicht überlappende URI erhält. 
+Dies trägt zur Reduktion der Komplexität des Systems bei und verhindert die Entstehung unnötig vieler Endpunkte, was die Pflege und Skalierung der Webdienste erleichtert.
+
+
+
 
 
 
